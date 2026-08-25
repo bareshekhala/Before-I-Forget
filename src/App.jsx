@@ -17,6 +17,10 @@ import MoviesPage from "./categories/Movies/MoviesPage";
 import MovieCreate from "./categories/Movies/MovieCreate";
 import MyMoviesPage from "./categories/Movies/MyMoviesPage";
 import MoviesDetails from "./categories/Movies/MoviesDetails";
+import SongsPage from "./categories/Songs/SongsPage";
+// import SongsDetailsPage from "./categories/Songs/SongsDetailsPage";
+import MySongsPage from "./categories/Songs/MySongsPage";
+import SongCreate from "./categories/Songs/SongCreate";
 
 function App() {
 
@@ -47,6 +51,12 @@ function App() {
 
                        <Route path="/movies/mymovies" element= {<MyMoviesPage />}/>
                         <Route path="/moviespage/:id" element= {<MoviesDetails />}/>
+
+{/* Songs */}
+                     <Route path="/songs" element= {<SongsPage />}/>
+                     {/* <Route path="/songs/:id" element= {<SongsDetailsPage />}/> */}
+                      <Route path="/songs/mysongs" element= {<MySongsPage />}/>
+                       <Route path="/songs/create" element= {<SongCreate />}/>
 
 </Routes></div>
 </div>

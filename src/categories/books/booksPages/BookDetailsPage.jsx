@@ -68,7 +68,7 @@ const [show, setShow] = useState(false);
           </Link>
           <Link to={"/"}><HomeIcon className="ml-5 text-blue-950"/></Link>
         </div>
-        <div className="glass w-full max-w-2xl mx-auto rounded-xl">
+        <div className=" w-full max-w-2xl mx-auto rounded-xl">
           <div className="flex justify-center">
             <img className="h-120 w-90 p-5 object-contain" src={book.image} />
           </div>
@@ -83,7 +83,7 @@ const [show, setShow] = useState(false);
             <p>Category: {book.category}</p>
           </div>
         </div>
-        
+
         <div className="flex justify-center gap-4 my-4">
           <div>
             <button

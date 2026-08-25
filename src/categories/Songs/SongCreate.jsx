@@ -1,21 +1,23 @@
-import { useEffect, useState } from "react";
-import { useNavigate } from "react-router-dom";
+import React from "react";
+import { useState } from "react";
 import axios from "axios";
 import { HomeIcon } from "lucide-animated";
 import { ArrowLeftIcon } from "lucide-animated";
 import { Link } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
+import { v4 as uuidv4 } from "uuid";
+import { useEffect } from "react";
 
-function BookCreatePage() {
+function SongCreate() {
   const navigate = useNavigate();
-  const [title, setTitle] = useState("");
-  const [author, setAuthor] = useState("");
-  const [image, setImage] = useState("");
-  const [category, setCategory] = useState("");
-  const [description, setDescription] = useState("");
+  const [song, setSong] = useState("");
 
-  const [moodId, setMoodId] = useState([]);
+  const [title, setTitle] = useState("");
+  const [composer, setComposer] = useState("");
+  const [url, setUrl] = useState("");
+  // const [image, setImage] = useState("");
   const [moods, setMoods] = useState([]);
-  // const[search,setSearch] = useState([])
+  const [moodId, setMoodId] = useState([]);
 
   //getting the moods
   useEffect(() => {
@@ -34,28 +36,28 @@ function BookCreatePage() {
     getMoods();
   }, []);
 
-  //post method
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
       const body = {
+        id: uuidv4(),
         title: title,
-        author: author,
-        image: image,
-        category: category,
-        description: description,
+        // "image": image,
+        "singer/composer": composer,
+        url: url,
         moodId: moodId,
-        myBook: true,
       };
-      await axios.post("https://beforeiforget-server.onrender.com/books", body);
+      await axios.post(
+        "https://beforeiforget-server.onrender.com/favsongs",
+        body,
+      );
 
-      navigate("/books/mybooks");
+      navigate("/songs/mysongs");
     } catch (error) {
       console.log(error);
     }
   };
 
-  //
   function handleMood(e, moodId) {
     if (e.target.checked) {
       setMoodId((pre) => [...pre, moodId]);
@@ -69,7 +71,7 @@ function BookCreatePage() {
   return (
     <div>
       <div className="pt-4 flex flex-row ">
-        <Link to={"/booksPage"}>
+        <Link to={"/songs"}>
           <ArrowLeftIcon className="ml-5 rounded-xl text-blue-950" />
         </Link>
         <Link to={"/"}>
@@ -79,7 +81,7 @@ function BookCreatePage() {
 
       <form
         onSubmit={handleSubmit}
-        className="flex flex-col gap-5 max-w-lg mx-auto mt-10 backdrop-blur-xs px-2 justify-items-center"
+        className="flex flex-col gap-10 max-w-lg px-2 mx-auto mt-10 backdrop-blur-xs justify-items-center"
       >
         <div className="flex flex-col gap-2">
           <label>Title:</label>
@@ -93,32 +95,21 @@ function BookCreatePage() {
         </div>
 
         <div className="flex flex-col gap-2">
-          <label>Author:</label>
+          <label>Singer/Composer:</label>
           <input
             type="text"
-            name="author"
-            value={author}
-            onChange={(e) => setAuthor(e.target.value)}
-            className="  px-4 py-3 form"
+            name="composer"
+            value={composer}
+            onChange={(e) => setComposer(e.target.value)}
+            className=" px-4 py-3 form"
           />
         </div>
 
-        <div className="flex flex-col gap-2">
-          <label>Description</label>
-          <textarea
-            value={description}
-            name="description"
-            onChange={(e) => setDescription(e.target.value)}
-            className="px-4 py-3 form"
-          />
-        </div>
-
-        <div className="flex flex-col gap-5">
+        {/* <div className="flex flex-col gap-5">
           <div>
             {" "}
             <label>Image</label>
           </div>
-
           <input
             type="url"
             name="image"
@@ -126,30 +117,19 @@ function BookCreatePage() {
             onChange={(e) => setImage(e.target.value)}
             className="px-4 py-3 form"
           />
+        </div> */}
 
-          <select
-            value={category}
-            onChange={(e) => setCategory(e.target.value)}
-            className="w-50 form"
-          >
-            <option value="" disabled>
-              Choose a category
-            </option>
-            <option>Fiction</option>
-            <option>Poetry</option>
-            <option>Philosophy</option>
-            <option>Psychology</option>
-            <option>Self-help</option>
-            <option>History</option>
-            <option>Biography</option>
-            <option>Memoir</option>
-            <option>Science</option>
-            <option>Fantasy</option>
-            <option>Mystery</option>
-            <option>Romance</option>
-            <option>Classics</option>
-            <option>Other</option>
-          </select>
+        <div className="flex flex-col gap-5">
+          <div>
+            <label>Spotify Link</label>
+          </div>
+          <input
+            type="url"
+            name="url"
+            value={url}
+            onChange={(e) => setUrl(e.target.value)}
+            className="px-4 py-3 form"
+          />{" "}
         </div>
 
         <div className="flex flex-wrap justify-center gap-3 pt-4 mb-20 max-w-2xl mx-auto">
@@ -170,11 +150,11 @@ function BookCreatePage() {
         </div>
 
         <button type="submit" className="btnDay h-15 mb-5 w-40 mx-auto">
-          Add Book
+          Add
         </button>
       </form>
     </div>
   );
 }
 
-export default BookCreatePage;
+export default SongCreate;

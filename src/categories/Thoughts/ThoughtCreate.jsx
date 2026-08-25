@@ -5,6 +5,8 @@ import { ArrowLeftIcon } from "lucide-animated";
 import { Link } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
 import { v4 as uuidv4 } from "uuid";
+import { useEffect } from "react";
+
 function ThoughtCreate() {
   const navigate = useNavigate();
 
@@ -16,6 +18,26 @@ function ThoughtCreate() {
   const [image, setImage] = useState("");
   const [category, setCategory] = useState("");
 
+  const [moods, setMoods] = useState([]);
+  const [moodId, setMoodId] = useState([]);
+
+  //getting the moods
+  useEffect(() => {
+    const getMoods = async () => {
+      try {
+        const response = await axios.get(
+          "https://beforeiforget-server.onrender.com/moods",
+        );
+
+        setMoods(response.data);
+      } catch (error) {
+        console.log(error);
+      }
+    };
+
+    getMoods();
+  }, []);
+
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
@@ -26,6 +48,7 @@ function ThoughtCreate() {
         description: description,
         date: date,
         category: category,
+        moodId: moodId,
       };
       await axios.post(
         "https://beforeiforget-server.onrender.com/memories",
@@ -37,6 +60,16 @@ function ThoughtCreate() {
       console.log(error);
     }
   };
+
+  function handleMood(e, moodId) {
+    if (e.target.checked) {
+      setMoodId((pre) => [...pre, moodId]);
+    } else {
+      setMoodId((pre) => {
+        return pre.filter((id) => id !== moodId);
+      });
+    }
+  }
 
   return (
     <div>
@@ -117,6 +150,23 @@ function ThoughtCreate() {
           <option>Memory📸</option>
           <option>Thought💭</option>{" "}
         </select>
+
+        <div className="flex flex-wrap justify-center gap-3 pt-4 mb-20 max-w-2xl mx-auto">
+          {moods.map((mood) => {
+            return (
+              <div key={mood.id}>
+                <input
+                  type="checkbox"
+                  value={mood.id}
+                  onChange={(e) => handleMood(e, mood.id)}
+                />
+                <label htmlFor={`mood-${mood.id}`} className="ml-2">
+                  {mood.name}
+                </label>
+              </div>
+            );
+          })}
+        </div>
 
         <button type="submit" className="btnDay h-15 mb-5 w-40 mx-auto">
           Add
