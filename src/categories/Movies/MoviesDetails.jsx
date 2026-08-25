@@ -1,29 +1,29 @@
+import React from 'react'
 import { useEffect, useState } from "react";
 import { Link, useParams, useNavigate } from "react-router-dom";
 import axios from "axios";
 import { ArrowLeftIcon } from "lucide-animated";
 import { HomeIcon } from "lucide-animated";
 
+function MoviesDetails() {
 
-function BookDetailsPage() {
   const navigate = useNavigate();
   const { id } = useParams();
-  const [book, setBook] = useState(null);
+  const [movie, setMovie] = useState(null);
   const [isLoading, setIsLoading] = useState(true);
 
 //Modal
 const [show, setShow] = useState(false);
  const handleClose = () => setShow(false);
- const handleShow = () => setShow(true)
+ const handleShow = () => setShow(true);
 
-// getting books to make a list from them
-  useEffect(() => {
+   useEffect(() => {
     const getData = async () => {
       try {
         const response = await axios.get(
-          `https://beforeiforget-server.onrender.com/books/${id}`,
+          `https://beforeiforget-server.onrender.com/movies/${id}`,
         );
-        setBook(response.data);
+        setMovie(response.data);
 
         // to show the loading page for 2 seconds
         setTimeout(() => {
@@ -37,15 +37,14 @@ const [show, setShow] = useState(false);
     getData();
   }, [id]);
 
-  //Delete function
+    //Delete function
   const handleDelete = async () => {
-     //console.log("Deleting book with id:", id);
     try {
       await axios.delete(
-        `https://beforeiforget-server.onrender.com/books/${id}`);
+        `https://beforeiforget-server.onrender.com/movies/${id}`);
 
   setShow(false)
-      navigate("/booksPage");
+      navigate("/moviespage");
     } catch (error) {
       console.log(error);
     }
@@ -60,31 +59,34 @@ const [show, setShow] = useState(false);
   }
 
   return (
-    <>
-      <div>
-        <div className="pt-4 flex flex-row ">
-          <Link to="/booksPage">
+     <>
+    <div>
+       
+      <div className="pt-4 flex flex-row ">
+          <Link to="/moviespage">
             <ArrowLeftIcon className="ml-5 rounded-xl text-blue-950" />
           </Link>
+
           <Link to={"/"}><HomeIcon className="ml-5 text-blue-950"/></Link>
+
         </div>
+
         <div className="glass w-full max-w-2xl mx-auto rounded-xl">
+
           <div className="flex justify-center">
-            <img className="h-120 w-90 p-5 object-contain" src={book.image} />
+            <img className="h-120 w-90 p-5 object-contain" src={movie.poster_path} />
           </div>
 
           <div className="flex gap-7 flex-col p-10">
-            <h1 className="items-left font-bold text-2xl">Title: {book.title}</h1>
+            <h1 className="items-left font-bold text-2xl">Title: {movie.title}</h1> 
+            </div>
 
-            <h2 className="text-xl" >Author: {book.author}</h2>
+             <div className="italic text-lg flex gap-7 flex-col px-10 pb-6">Description: {movie.overview}</div>
 
-            <p className="italic text-lg">Description: {book.description}</p>
+            </div>
 
-            <p>Category: {book.category}</p>
-          </div>
-        </div>
-        
-        <div className="flex justify-center gap-4 my-4">
+
+             <div className="flex justify-center gap-4 my-4">
           <div>
             <button
               onClick={handleShow}
@@ -100,7 +102,7 @@ const [show, setShow] = useState(false);
           </div>
         </div>
 
-        {/*Are you sure part*/}
+                {/*Are you sure part*/}
 {show && (
   <div className="fixed inset-0  form flex items-center text-center justify-center">
 
@@ -132,9 +134,10 @@ const [show, setShow] = useState(false);
     </div>
   </div>
 )}
-      </div>
+
+    </div>
     </>
-  );
+  )
 }
 
-export default BookDetailsPage;
+export default MoviesDetails

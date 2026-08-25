@@ -12,7 +12,11 @@ import Discover from "./pages/DiscoverPage";
 import ThoughtsPage from "./categories/Thoughts/ThoughtsPage";
 import ThoughtCreate from "./categories/Thoughts/ThoughtCreate";
 import MyThoughtsPage from "./categories/Thoughts/MyThoughtsPage";
-// import Cloud from "./components/Cloud"
+
+import MoviesPage from "./categories/Movies/MoviesPage";
+import MovieCreate from "./categories/Movies/MovieCreate";
+import MyMoviesPage from "./categories/Movies/MyMoviesPage";
+import MoviesDetails from "./categories/Movies/MoviesDetails";
 
 function App() {
 
@@ -35,6 +39,14 @@ function App() {
                    <Route path="/thought" element= {<ThoughtsPage />}/>
                    <Route path="/thought/create" element= {<ThoughtCreate />}/>
                    <Route path="/thought/mythoughts" element= {<MyThoughtsPage />}/>
+
+                   {/* Movies */}
+                     <Route path="/moviespage" element= {<MoviesPage />}/>
+
+                      <Route path="/movies/create" element= {<MovieCreate />}/>
+
+                       <Route path="/movies/mymovies" element= {<MyMoviesPage />}/>
+                        <Route path="/moviespage/:id" element= {<MoviesDetails />}/>
 
 </Routes></div>
 </div>

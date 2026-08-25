@@ -1,11 +1,14 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
 import BookCard from "../categories/books/booksComponents/BookCard";
+import MovieCard from "../categories/Movies/MovieCard";
 
 function Discover() {
 
   const [mood, setMood] = useState("");
-  const [suggestions, setSuggestions] = useState([]);
+  const [suggestions1, setSuggestions1] = useState([]);
+    const [suggestions2, setSuggestions2] = useState([]);
+
   const [moods, setMoods] = useState([]);
 
   //getting the moods
@@ -29,15 +32,24 @@ function Discover() {
     const selectedMood = e.target.value;
     setMood(selectedMood);
     try {
-      const response = await axios.get(
-        "https://beforeiforget-server.onrender.com/books",
-      );
+      const response1 = await axios.get(
+        "https://beforeiforget-server.onrender.com/books")
+        const response2 = await axios.get( "https://beforeiforget-server.onrender.com/movies")
 
-      const result = response.data.filter((book) => {
+     ;
+
+      const result1 = response1.data.filter((book) => {
         return book.moodId.includes(Number(selectedMood));
       });
 
-      setSuggestions(result);
+        const result2 = response2.data.filter((movie) => {
+        return movie.moodId.includes(Number(selectedMood));
+      });
+
+
+
+      setSuggestions1(result1);
+      setSuggestions2(result2)
     } catch (error) {
       console.log(error);
     }
@@ -63,8 +75,12 @@ function Discover() {
         </div>
 
     <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3  max-w-6xl mx-auto justify-items-center gap-10 my-30">
-      {suggestions.map((book) => {
-        return <BookCard key={book.id} {...book} />;
+      {suggestions1.map((book) => {
+        return <BookCard key={book.id} {...book} />
+        ;
+      })}
+      {suggestions2.map((movie)=>{
+        return <MovieCard key={movie.id} {...movie}/>
       })}
     </div>
     

@@ -1,5 +1,5 @@
 import React from "react";
-import SearchBar from "../components/SearchBar";
+
 import { Link } from "react-router-dom";
 import {
   BookTextIcon,
@@ -38,7 +38,7 @@ function DashboardPage() {
             </div>
 
             <div className="flex flex-col size-50 border-2 p-2  cardDay text-center justify-center items-center gap-2 text-xl">
-              <Link>Movies</Link>
+              <Link to={"/moviespage"}>Movies</Link>
               <ClapIcon />
             </div>
 
