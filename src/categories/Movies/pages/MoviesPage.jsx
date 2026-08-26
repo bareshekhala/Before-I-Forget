@@ -70,7 +70,7 @@ function MoviesPage() {
    "My Neighbor Totoro",
    "Taste of Cherry",
    "Bashu, the Little Stranger",
-   "Death of Yazdgerd"
+   "Death of Yazdgerd", "Inception"
   ];
 
   const recommendedMovies = movies.filter((movie) => {

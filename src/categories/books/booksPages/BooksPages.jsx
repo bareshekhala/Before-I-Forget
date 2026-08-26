@@ -68,6 +68,14 @@ function BooksPages() {
     "Astronomy Made Simple",
     "Shahnameh: The Persian Book of Kings",
     "Dissolving Classroom",
+    "A Game of Thrones",
+    "The Stranger",
+    "Blindness",
+    "The Autumn of the Patriarch",
+    "Metamorphosis",
+    "How We Survived Communism and Even Laughed",
+    "The Old Man and the Sea"
+    
   ];
 
   const recommendedBooks = books.filter((book) => {

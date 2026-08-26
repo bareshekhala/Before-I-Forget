@@ -2,7 +2,7 @@ import axios from "axios";
 import { useState } from "react";
 import BookCard from "../categories/books/booksComponents/BookCard";
 import MovieCard from "../categories/Movies/components/MovieCard";
-
+import DiscoverSearchBar from "../components/DiscoverSearchbar";
 
 import React from "react";
 
@@ -10,6 +10,8 @@ function DiscoveredPageCategory() {
   const [suggestions1, setSuggestions1] = useState([]);
   const [suggestions2, setSuggestions2] = useState([]);
   const [category, setCategory] = useState("");
+    const [query, setQuery] = useState("");
+  
 
   const handleCategory = async (e) => {
 
@@ -40,6 +42,10 @@ function DiscoveredPageCategory() {
 
   return (
     <>
+    <div>
+        <DiscoverSearchBar query={query} setQuery={setQuery} />
+      </div>  
+
       <div className="text-center mt-15 px-2">
         <h1 className="italic text-3xl">Select a Category</h1>
 
@@ -75,13 +81,13 @@ function DiscoveredPageCategory() {
             Biography
           </button>
 
-          <button className="mx-auto my-20 px-5 py-2 btnDay" value="memoir" onClick={handleCategory}>
+          {/* <button className="mx-auto my-20 px-5 py-2 btnDay" value="memoir" onClick={handleCategory}>
             Memoir
-          </button>
+          </button> */}
 
-          <button className="mx-auto my-20 px-5 py-2 btnDay" value="poetry" onClick={handleCategory}>
+          {/* <button className="mx-auto my-20 px-5 py-2 btnDay" value="poetry" onClick={handleCategory}>
             Poetry
-          </button>
+          </button> */}
 
           <button className="mx-auto my-20 px-5 py-2 btnDay" value="science" onClick={handleCategory}>
             Science
@@ -109,10 +115,18 @@ function DiscoveredPageCategory() {
 
 
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3  max-w-6xl mx-auto justify-items-center gap-10 my-30">
-          {suggestions1.map((book) => {
+           {suggestions1
+          .filter((book) =>
+            book.title.toLowerCase().includes(query.toLowerCase()),
+          )
+          .map((book) => {
             return <BookCard key={book.id} {...book} />;
           })}
-          {suggestions2.map((movie) => {
+        {suggestions2
+          .filter((movie) =>
+            movie.title.toLowerCase().includes(query.toLowerCase()),
+          )
+          .map((movie) => {
             return <MovieCard key={movie.id} {...movie} />;
           })}
         </div>
