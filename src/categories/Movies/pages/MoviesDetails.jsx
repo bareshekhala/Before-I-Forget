@@ -110,22 +110,22 @@ const [show, setShow] = useState(false);
             </div>
 
 
-             <div className="flex justify-center gap-4 my-4">
+             <div className="flex justify-center gap-3 sm:gap-4 my-4 px-2">
           <div>
             <button
               onClick={handleShow}
-              className="px-6 py-2 w-35 btnDay"
+              className="px-2 sm:px-6 py-2 w-24 sm:w-35 btnDay"
             >
               Delete
             </button>
           </div>
           <div>
-            <button onClick={()=> navigate(`/movies/edit/${id}`)} className="px-6 py-2 w-35 btnDay">
+            <button onClick={()=> navigate(`/movies/edit/${id}`)} className="px-2 sm:px-6 py-2 w-24 sm:w-35 btnDay">
               Edit
             </button>
           </div>
            <div>
-            <button  onClick={handleFav} className="px-6 py-2 w-35 btnDay">
+            <button  onClick={handleFav} className="px-2 sm:px-6 py-2 w-30 sm:w-35 btnDay">
               Add to Favorites
             </button>
           </div>

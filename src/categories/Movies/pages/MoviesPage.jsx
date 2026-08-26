@@ -82,7 +82,7 @@ function MoviesPage() {
       <div className="flex flex-row">
         <button
           onClick={() => navigate("/movies/create")}
-          className="px-6 py-2 w-35 btnDay m-3 italic"
+         className="px-6 py-2 w-38 btnDay m-3 italic"
         >
           Add a New Movie
         </button>
@@ -99,9 +99,9 @@ function MoviesPage() {
         </Link>
       </div>
 
-      <h1 className=" m-6 text-3xl italic">Recommended Movies:</h1>
+      <h1 className=" mt-6 mx-6 text-3xl italic">Recommended Movies:</h1>
 
-      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 max-w-6xl mx-auto justify-items-center gap-10 my-25">
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 max-w-6xl mx-auto justify-items-center gap-10 my-12">
         {recommendedMovies.map((eachMovie) => {
           return <MovieCard key={eachMovie.id} {...eachMovie} />;
         })}

@@ -8,24 +8,24 @@ import { useNavigate } from "react-router-dom";
 function MyBooks() {
     const navigate = useNavigate();
   
-  const [mBooks, setMbooks] = useState([]);
+  // const [mBooks, setMbooks] = useState([]);
   const [fav,setFav] = useState([])
 
-  useEffect(() => {
-    const getData = async () => {
-      try {
-        const response = await axios.get(
-          "https://beforeiforget-server.onrender.com/books",
-        );
-        setMbooks(response.data);
-      } catch (error) {
-        console.log(error);
-      }
-    };
-    getData();
-  }, []);
+  // useEffect(() => {
+  //   const getData = async () => {
+  //     try {
+  //       const response = await axios.get(
+  //         "https://beforeiforget-server.onrender.com/books",
+  //       );
+  //       setMbooks(response.data);
+  //     } catch (error) {
+  //       console.log(error);
+  //     }
+  //   };
+  //   getData();
+  // }, []);
 
-  const myBooks = mBooks.filter((book) => book.myBook === true);
+  // const myBooks = mBooks.filter((book) => book.myBook === true);
 
    useEffect(()=>{
     const getFav = async() =>{
@@ -69,10 +69,11 @@ function MyBooks() {
           <HomeIcon className="ml-5 text-blue-950" />
         </Link>
       </div>
-<div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3  max-w-6xl mx-auto justify-items-center gap-10 my-30">
-      {myBooks.map((book) => {
+
+<div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3  max-w-6xl mx-auto justify-items-center gap-10 my-15">
+      {/* {myBooks.map((book) => {
         return <BookCard key={book.id} {...book} />;
-      })}
+      })} */}
 
 {fav.map((eachbook) => {
   return (

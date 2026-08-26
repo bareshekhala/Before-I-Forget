@@ -44,7 +44,7 @@ function DiscoveredPageCategory() {
         <h1 className="italic text-3xl">Select a Category</h1>
 
         <p className=" italic pt-2">
-          Select a Mood to Discover What You Might Need Right Now
+          Select a Category to Discover What You Might Need Right Now
         </p>
 
         <div className="flex flex-wrap justify-center gap-3 mb-20 max-w-2xl mx-auto">

@@ -11,8 +11,8 @@ function SearchBar({ query, setQuery }) {
         type="search"
         value={query}
         onChange={handleSearch}
-        placeholder="Find a music..."
-        className="w-44 md:w-80 px-6 form m-3 h-15 mt-5"
+        placeholder="Search..."
+        className="w-34 md:w-70 px-6 form m-3 h-15 mt-5"
       />
     </div>
   );

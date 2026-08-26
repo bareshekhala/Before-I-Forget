@@ -45,9 +45,8 @@ function BookCreatePage() {
         category: category,
         description: description,
         moodId: moodId,
-        myBook: true,
       };
-      await axios.post("https://beforeiforget-server.onrender.com/books", body);
+      await axios.post("https://beforeiforget-server.onrender.com/favbooks", body);
 
       navigate("/books/mybooks");
     } catch (error) {
@@ -157,7 +156,6 @@ function BookCreatePage() {
             return (
               <div key={mood.id}>
                 <input
-                required
                   type="checkbox"
                   value={mood.id}
                   onChange={(e) => handleMood(e, mood.id)}

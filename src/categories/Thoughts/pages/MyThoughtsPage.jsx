@@ -43,7 +43,7 @@ const [thoughts, setThoughts] = useState([]);
       </div>
 
 
-    <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3  max-w-6xl mx-auto justify-items-center gap-10 my-30">
+    <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3  max-w-6xl mx-auto justify-items-center gap-10 my-15">
 
       {thoughts.map((thought) => (
         <ThoughtCard

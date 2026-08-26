@@ -64,7 +64,8 @@ const [isLoading, setIsLoading] = useState(true);
           <HomeIcon className="ml-5 text-blue-950" />
         </Link>
       </div>
-      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3  max-w-6xl mx-auto justify-items-center gap-10 my-30">
+
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3  max-w-6xl mx-auto justify-items-center gap-10 my-15">
 
       {fav.map((eachFav) => (
         <div key={eachFav.id} className="w-85">

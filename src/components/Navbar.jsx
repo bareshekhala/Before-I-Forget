@@ -46,16 +46,7 @@ function Navbar() {
             </Link>
           </div>
         </div>
-          {/* <div className="w-full">
-    <iframe
-      src="https://open.spotify.com/embed/playlist/4FCySdtvSlHZtaXyNs7Ejr?utm_source=generator&theme=0&si=06d4341954704feb"
-      width="130%"
-      height="152"
-      allow="autoplay; clipboard-write; encrypted-media;"
-      loading="lazy"
-      className="rounded-xl left-0"
-    ></iframe>
-  </div> */}
+
       </nav>
 
       <nav className="flex md:hidden sticky top-0 z-20 w-full items-center justify-between p-4 backdrop-blur-md flex-col gap-y-10 ">
@@ -63,7 +54,8 @@ function Navbar() {
 
         <select defaultValue={Option[1]}
           onChange={(e) => {
-            e.target.value === "Discover" && navigate("/discover");
+            e.target.value === "Discover by Mood" && navigate("/discover");
+            e.target.value === "Discover by Category" && navigate("/discover/category");
             e.target.value === "Home" && navigate("/"),
 
               e.target.value === "Books" && navigate("/booksPage")
@@ -79,7 +71,9 @@ function Navbar() {
           <option>Movies</option>
                     <option>Songs</option>
 
-          <option>Discover</option>
+          <option>Discover by Mood</option>
+                    <option>Discover by Category</option>
+
         </select>
       </nav>
     </>

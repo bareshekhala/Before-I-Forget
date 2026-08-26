@@ -71,7 +71,7 @@ function BooksPages() {
   ];
 
   const recommendedBooks = books.filter((book) => {
-    return book.myBook !== true && selectedBooks.includes(book.title);
+    return  selectedBooks.includes(book.title);
   });
 
   return (
@@ -97,7 +97,7 @@ function BooksPages() {
       </div>
       <h1 className=" m-6 text-3xl italic">Recommended Books:</h1>
 
-      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 max-w-6xl mx-auto justify-items-center gap-10 my-25">
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 max-w-6xl mx-auto justify-items-center gap-10 my-12">
         {recommendedBooks.map((eachBook) => {
           return <BookCard key={eachBook.id} {...eachBook} />;
         })}
