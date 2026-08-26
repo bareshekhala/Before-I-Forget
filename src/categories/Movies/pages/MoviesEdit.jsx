@@ -18,6 +18,7 @@ function MoviesEdit() {
   const [mood, setMood] = useState([]);
   const [moods, setMoods] = useState([]);
   const [moodId, setMoodId] = useState([]);
+  const [errorMessage, setErrorMessage] = useState(null);
 
   const [isLoading, setIsLoading] = useState(true);
 
@@ -44,6 +45,11 @@ function MoviesEdit() {
 
   const handleFormSubmit = async (e) => {
     e.preventDefault();
+    if (mood.length === 0 || !title) {
+      setErrorMessage("Please Fill out the Titel and Choose at least one Mood");
+      return;
+    }
+
     try {
       let body = {
         title: title,
@@ -186,6 +192,11 @@ function MoviesEdit() {
               </div>
             );
           })}
+             <div>
+            {errorMessage && (
+              <p className=" relative text-fuchsia-800">{errorMessage}</p>
+            )}
+          </div>
         </div>
 
         <button type="submit" className="btnDay h-15 mb-5 w-40 mx-auto">

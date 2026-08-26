@@ -40,14 +40,14 @@ function DiscoveredPageCategory() {
 
   return (
     <>
-      <div className="text-center mt-15">
+      <div className="text-center mt-15 px-2">
         <h1 className="italic text-3xl">Select a Category</h1>
 
-        <p className=" italic pt-2">
+        <p className=" italic pt-2 px-2">
           Select a Category to Discover What You Might Need Right Now
         </p>
 
-        <div className="flex flex-wrap justify-center gap-3 mb-20 max-w-2xl mx-auto">
+        <div className="flex flex-wrap justify-center gap-3  max-w-2xl mx-auto">
           <button className="mx-auto my-20 px-5 py-2 btnDay" value="fiction" onClick={handleCategory}>
             Fiction
           </button>

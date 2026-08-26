@@ -15,7 +15,7 @@ function BookCreatePage() {
 
   const [moodId, setMoodId] = useState([]);
   const [moods, setMoods] = useState([]);
-  // const[search,setSearch] = useState([])
+  const [errorMessage, setErrorMessage] = useState(null);
 
   //getting the moods
   useEffect(() => {
@@ -37,6 +37,12 @@ function BookCreatePage() {
   //post method
   const handleSubmit = async (e) => {
     e.preventDefault();
+
+    if (moodId.length === 0 || !title) {
+      setErrorMessage("Please Fill out the Titel and Choose at least one Mood");
+      return;
+    }
+
     try {
       const body = {
         title: title,
@@ -46,7 +52,10 @@ function BookCreatePage() {
         description: description,
         moodId: moodId,
       };
-      await axios.post("https://beforeiforget-server.onrender.com/favbooks", body);
+      await axios.post(
+        "https://beforeiforget-server.onrender.com/favbooks",
+        body,
+      );
 
       navigate("/books/mybooks");
     } catch (error) {
@@ -126,7 +135,8 @@ function BookCreatePage() {
             className="px-4 py-3 form"
           />
 
-          <select required
+          <select
+            required
             value={category}
             onChange={(e) => setCategory(e.target.value)}
             className="w-50 form"
@@ -166,8 +176,11 @@ function BookCreatePage() {
               </div>
             );
           })}
+          <div>
+             {errorMessage && <p className=" relative text-fuchsia-800">{errorMessage}</p>}
+          </div>
         </div>
-
+       
         <button type="submit" className="btnDay h-15 mb-5 w-40 mx-auto">
           Add Book
         </button>

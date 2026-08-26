@@ -64,16 +64,16 @@ function Discover() {
 
   return (
 <>
-<div className="text-center mt-15">
+<div className="text-center mt-15 px-2">
 <h1 className="italic text-3xl">How Are You Feeling Today?</h1>
 <p className=" italic pt-2">Select a Mood to Discover What You Might Need Right Now</p>
 </div>
-        <div className="flex flex-wrap justify-center gap-3 mb-20 max-w-2xl mx-auto">
+        <div className="flex flex-wrap justify-center gap-3  max-w-2xl mx-auto">
           {moods.map((mood) => {
             return (
              
                 <button 
-                key={mood.id} value={mood.id} onClick= {handleMood} className="mx-auto my-20 px-5 py-2 btnDay">
+                key={mood.id} value={mood.id} onClick= {handleMood} className="mx-auto my-15 px-5 py-2 btnDay">
                   {mood.name}
                 </button>
      

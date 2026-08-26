@@ -26,6 +26,8 @@ import SongsPage from "./categories/Songs/Pages/SongsPage";
 import MySongsPage from "./categories/Songs/Pages/MySongsPage";
 import SongCreate from "./categories/Songs/Pages/SongCreate";
 
+import ChartPage from "./pages/ChartPage";
+
 function App() {
 
   return (
@@ -66,6 +68,9 @@ function App() {
                      {/* <Route path="/songs/:id" element= {<SongsDetailsPage />}/> */}
                       <Route path="/songs/mysongs" element= {<MySongsPage />}/>
                        <Route path="/songs/create" element= {<SongCreate />}/>
+
+ <Route path="/chart" element= {<ChartPage />}/>
+
 
 </Routes></div>
 </div>

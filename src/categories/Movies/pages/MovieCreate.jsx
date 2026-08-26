@@ -14,6 +14,7 @@ function MovieCreate() {
 
   const [moodId, setMoodId] = useState([]);
   const [moods, setMoods] = useState([]);
+  const [errorMessage, setErrorMessage] = useState(null);
 
   //getting the moods
   useEffect(() => {
@@ -35,6 +36,10 @@ function MovieCreate() {
   //post method
   const handleSubmit = async (e) => {
     e.preventDefault();
+    if (moodId.length === 0 || !title) {
+      setErrorMessage("Please Fill out the Titel and Choose at least one Mood");
+      return;
+    }
     try {
       const body = {
         title: title,
@@ -154,6 +159,11 @@ function MovieCreate() {
               </div>
             );
           })}
+          <div>
+            {errorMessage && (
+              <p className=" relative text-fuchsia-800">{errorMessage}</p>
+            )}
+          </div>
         </div>
 
         <button type="submit" className="btnDay h-15 mb-5 w-40 mx-auto">

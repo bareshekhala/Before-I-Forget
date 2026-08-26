@@ -20,6 +20,7 @@ function BookEditPage() {
   const [moodId, setMoodId] = useState([]);
 
   const [isLoading, setIsLoading] = useState(true);
+  const [errorMessage, setErrorMessage] = useState(null);
 
   useEffect(() => {
     const getData = async () => {
@@ -44,6 +45,10 @@ function BookEditPage() {
 
   const handleFormSubmit = async (e) => {
     e.preventDefault();
+    if (mood.length === 0 || !title) {
+      setErrorMessage("Please Fill out the Titel and Choose at least one Mood");
+      return;
+    }
     try {
       let body = {
         title: title,
@@ -160,6 +165,7 @@ function BookEditPage() {
           />
           <select
             value={category}
+            required
             onChange={(e) => setCategory(e.target.value)}
             className="w-30 form"
           >
@@ -192,7 +198,6 @@ function BookEditPage() {
                     type="checkbox"
                     value={eachMood.id}
                     checked={mood.includes(eachMood.id)}
-                    
                     onChange={(e) => handleMood(e, eachMood.id)}
                   />
                   <label className="ml-2">{eachMood.name}</label>
@@ -200,6 +205,11 @@ function BookEditPage() {
               </div>
             );
           })}
+          <div>
+            {errorMessage && (
+              <p className=" relative text-fuchsia-800">{errorMessage}</p>
+            )}
+          </div>
         </div>
 
         <button type="submit" className="btnDay h-15 mb-5 w-40 mx-auto">

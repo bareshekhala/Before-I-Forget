@@ -22,7 +22,7 @@ function DashboardPage() {
             {/* <SearchBar className="justify-item-right" /> */}
           </div>
 
-            <div className="max-w-5xl mx-auto px-6 mt-16">
+            <div className="max-w-5xl mx-auto px-6 mt-6">
              <div className="form p-8 flex flex-col md:flex-row items-center justify-between gap-6">
                <div className="text-left">
                              <h2 className="text-2xl italic mb-6 border-b border-current/20 pb-2">Discover by Mood</h2>
@@ -36,7 +36,7 @@ function DashboardPage() {
              </div>
           </div>
 
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 max-w-4xl mx-auto justify-items-center gap-10 my-20">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 max-w-4xl mx-auto justify-items-center gap-10 my-10">
             
 
             <div className="flex flex-col size-50 border-2 p-2  cardDay text-center justify-center items-center gap-2 text-xl">
@@ -57,7 +57,7 @@ function DashboardPage() {
               <ClapIcon />
             </div>
 
-            <div className="flex flex-col w-50 lg:w-[90%] text=2xl lg:col-span-3 h-50 border-2 p-2 cardDay text-center justify-center items-center gap-2 text-xl" >
+            <div className="flex flex-col w-50 lg:w-[90%] text=2xl lg:col-span-3 h-37 border-2 p-2 cardDay text-center justify-center items-center gap-2 text-xl" >
               <Link
                 to={"/thought"}>
                 Brain Storming
