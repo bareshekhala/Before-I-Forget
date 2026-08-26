@@ -1,33 +1,28 @@
 @import "tailwindcss";
 body {
-  background-image: url("./assets/day.png");
-  scroll-behavior: smooth;
-  /* background-size: cover; */
-  background-attachment: fixed;
+ background: linear-gradient(135deg, #d5d0d7 0%, #ffe9e3 50%, #f4e8fb 100%);
+  color: #334155;
   font-family: "Lora";
 }
 .cardDay {
-  background: rgba(255, 255, 255, 0.1);
+  background: rgba(255, 255, 255, 0.45);
   backdrop-filter: blur(15px);
-
-  border: 1px solid rgba(255, 255, 255, 0.5);
+  border: 1px solid rgba(255, 255, 255, 0.8);
   border-radius: 20px;
-
   color: #102a52;
-
-  box-shadow: 0 8px 25px rgba(216, 195, 89, 0.62);
-
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.05);
   transition: 0.3s;
 }
 
 .cardDay:hover {
+  
   transform: translateY(-8px);
-  rotate: -1deg;
+ 
   /* border: 1px solid gold; */
 }
 
 .form{
-   background: rgba(255, 255, 255, 0.1);
+  background: rgba(255, 255, 255, 0.45);
   backdrop-filter: blur(15px);
 
   border: 1px solid rgba(255, 255, 255, 0.5);
@@ -35,11 +30,11 @@ body {
 
   color: #102a52;
 
-  box-shadow: 0 8px 25px rgba(216, 195, 89, 0.62);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.05);
 }
 
 .btnDay {
-  background-color: #1455c0;
+  background-color: #0f172a;
   color: white;
   border: none;
   border-radius: 50px;

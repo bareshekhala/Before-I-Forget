@@ -6,32 +6,28 @@ import { HomeIcon } from "lucide-animated";
 import { ArrowLeftIcon } from "lucide-animated";
 import { Link } from "react-router-dom";
 
-function BookEditPage() {
-  const navigate = useNavigate();
+function MoviesEdit() {
+ const navigate = useNavigate();
   const { id } = useParams();
 
   const [title, setTitle] = useState("");
-  const [author, setAuthor] = useState("");
-  const [image, setImage] = useState("");
-  const [category, setCategory] = useState("");
-  const [description, setDescription] = useState("");
+  const [ posterPath, setPosterPath] = useState("");
+  const [overview, setOverview] = useState("");
   const [mood, setMood] = useState([]);
   const [moods, setMoods] = useState([]);
   const [moodId, setMoodId] = useState([]);
 
   const [isLoading, setIsLoading] = useState(true);
 
-  useEffect(() => {
+useEffect(() => {
     const getData = async () => {
       try {
         const response = await axios.get(
-          `https://beforeiforget-server.onrender.com/books/${id}`,
+          `https://beforeiforget-server.onrender.com/movies/${id}`,
         );
         setTitle(response.data.title);
-        setAuthor(response.data.author);
-        setCategory(response.data.category);
-        setImage(response.data.image);
-        setDescription(response.data.description);
+        setPosterPath(response.data.poster_path);
+        setOverview(response.data.overview);
         setMood(response.data.moodId || []);
 
         setIsLoading(false);
@@ -47,25 +43,23 @@ function BookEditPage() {
     try {
       let body = {
         title: title,
-        author: author,
-        image: image,
-        category: category,
-        description: description,
+poster_path: posterPath, 
+      overview: overview,
         moodId: mood,
       };
 
-      await axios.put(
-        `https://beforeiforget-server.onrender.com/books/${id}`,
+    await axios.put(
+        `https://beforeiforget-server.onrender.com/movies/${id}`,
         body,
       );
 
-      navigate(`/booksPage/${id}`);
+      navigate(`/movies/${id}`);
     } catch (error) {
       console.log(error);
     }
   };
 
-  useEffect(() => {
+   useEffect(() => {
     const getMoods = async () => {
       try {
         const response = await axios.get(
@@ -81,7 +75,7 @@ function BookEditPage() {
     getMoods();
   }, []);
 
-  function handleMood(e, moodId) {
+   function handleMood(e, moodId) {
     if (e.target.checked) {
       setMood((pre) => [...pre, moodId]);
     } else {
@@ -99,21 +93,18 @@ function BookEditPage() {
     );
   }
 
+
   return (
     <div>
-      <div className="pt-4 flex flex-row ">
-        <Link to={"/booksPage"}>
-          <ArrowLeftIcon className="ml-5 rounded-xl text-blue-950" />
-        </Link>
-        <Link to={"/"}>
-          <HomeIcon className="ml-5 text-blue-950" />
-        </Link>
-      </div>
+            <div className="pt-4 flex flex-row ">
+          <Link to={"/moviespage"}>
+            <ArrowLeftIcon className="ml-5 rounded-xl text-blue-950" />
+          </Link>
+          <Link to={"/"}><HomeIcon className="ml-5 text-blue-950"/></Link>
+        </div>
 
-      <form
-        onSubmit={handleFormSubmit}
-        className="flex flex-col gap-5 max-w-lg mx-auto mt-10 backdrop-blur-md justify-items-center px-2"
-      >
+      <form onSubmit={handleFormSubmit} className="flex flex-col gap-5 max-w-lg mx-auto mt-10 backdrop-blur-xs px-2 justify-items-center">
+
         <div className="flex flex-col gap-2">
           <label>Title:</label>
           <input
@@ -121,51 +112,34 @@ function BookEditPage() {
             name="title"
             value={title}
             onChange={(e) => setTitle(e.target.value)}
-            className="px-4 py-3 form"
-          />
-        </div>
-
-        <div className="flex flex-col gap-2">
-          <label>Author:</label>
-          <input
-            type="text"
-            name="author"
-            value={author}
-            onChange={(e) => setAuthor(e.target.value)}
-            className="px-4 py-3 form"
+            className=" px-4 py-3 form"
           />
         </div>
 
         <div className="flex flex-col gap-2">
           <label>Description</label>
           <textarea
-            value={description}
-            name="description"
-            onChange={(e) => setDescription(e.target.value)}
-            className=" px-4 py-3 form"
+            value={overview}
+            name="overview"
+            onChange={(e) => setOverview(e.target.value)}
+            className="px-4 py-3 form"
           />
         </div>
 
         <div className="flex flex-col gap-5">
-          <div>
-            {" "}
-            <label>Image</label>
-          </div>
-          <input
-            type="url"
-            name="image"
-            value={image}
-            onChange={(e) => setImage(e.target.value)}
-            className="px-4 py-3 form"
-          />
-          <select
-            value={category}
-            onChange={(e) => setCategory(e.target.value)}
-            className="w-30 form"
-          >
-            <option value="" disabled>
-              Choose a category
-            </option>
+          <div> <label>Image</label></div>
+
+          <input type="url" name="image" value={posterPath} 
+          onChange={(e)=> setPosterPath(e.target.value)}
+          className="px-4 py-3 form"
+          /> 
+          
+          {/* <select value={category}
+          onChange={(e)=> setCategory(e.target.value)}
+          className="w-50 form">
+                      <option value="" disabled>
+    Choose a category
+  </option>
             <option>Fiction</option>
             <option>Poetry</option>
             <option>Philosophy</option>
@@ -180,34 +154,32 @@ function BookEditPage() {
             <option>Romance</option>
             <option>Classics</option>
             <option>Other</option>
-          </select>
+          </select> */}
         </div>
 
         <div className="flex flex-wrap justify-center gap-3 pt-4 mb-20 max-w-2xl mx-auto">
           {moods.map((eachMood) => {
             return (
-              <div>
-                <div key={eachMood.id}>
-                  <input
-                    type="checkbox"
-                    value={eachMood.id}
-                    checked={mood.includes(eachMood.id)}
-                    
-                    onChange={(e) => handleMood(e, eachMood.id)}
-                  />
-                  <label className="ml-2">{eachMood.name}</label>
-                </div>
+              <div key={eachMood.id} >
+                <input type="checkbox" value={eachMood.id} 
+                  checked={mood.includes(eachMood.id)}
+                onChange= {(e)=> handleMood(e, eachMood.id)}/>
+                <label className="ml-2">
+                  {eachMood.name}
+                </label>
               </div>
             );
           })}
         </div>
 
-        <button type="submit" className="btnDay h-15 mb-5 w-40 mx-auto">
-          Done
-        </button>
+        <button
+          type="submit"
+          className="btnDay h-15 mb-5 w-40 mx-auto"
+        >
+Done        </button>
       </form>
     </div>
-  );
+  )
 }
 
-export default BookEditPage;
+export default MoviesEdit

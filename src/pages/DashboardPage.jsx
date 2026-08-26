@@ -17,12 +17,27 @@ function DashboardPage() {
           <div className="text-left sticky top-0 z-10 w-full bg-inherit p-6 mb-8 md:p-10">
             <h1 className="italic text-3xl">Your Archive</h1>
             <p className="italic text-xl pt-3">
-              ORGANIZE YOUR THOUGHTS AND MEMORIES
+              ORGANIZE YOUR THOUGHTS, MEDIA AND MEMORIES
             </p>
             {/* <SearchBar className="justify-item-right" /> */}
           </div>
 
+            <div className="max-w-5xl mx-auto px-6 mt-16">
+             <div className="form p-8 flex flex-col md:flex-row items-center justify-between gap-6">
+               <div className="text-left">
+                             <h2 className="text-2xl italic mb-6 border-b border-current/20 pb-2">Discover by Mood</h2>
+
+                 <h3 className="text-2xl font-semibold italic mb-2">How are you feeling today?</h3>
+                 <p>Explore your archive based on your current mood and find the perfect book, movie, or song.</p>
+               </div>
+               <Link to="/discover" className="btnDay px-8 py-3 text-lg font-medium whitespace-nowrap">
+                 Explore Moods
+               </Link>
+             </div>
+          </div>
+
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 max-w-4xl mx-auto justify-items-center gap-10 my-20">
+            
 
             <div className="flex flex-col size-50 border-2 p-2  cardDay text-center justify-center items-center gap-2 text-xl">
 

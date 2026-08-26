@@ -2,12 +2,14 @@ import axios from "axios";
 import React, { useEffect, useState } from "react";
 import BookCard from "../categories/books/booksComponents/BookCard";
 import MovieCard from "../categories/Movies/MovieCard";
+import SongCard from "../categories/Songs/SongCard";
 
 function Discover() {
 
   const [mood, setMood] = useState("");
   const [suggestions1, setSuggestions1] = useState([]);
     const [suggestions2, setSuggestions2] = useState([]);
+    const [suggestions3, setSuggestions3] = useState([]);
 
   const [moods, setMoods] = useState([]);
 
@@ -35,7 +37,7 @@ function Discover() {
       const response1 = await axios.get(
         "https://beforeiforget-server.onrender.com/books")
         const response2 = await axios.get( "https://beforeiforget-server.onrender.com/movies")
-
+ const response3 = await axios.get( "https://beforeiforget-server.onrender.com/songs")
      ;
 
       const result1 = response1.data.filter((book) => {
@@ -45,11 +47,16 @@ function Discover() {
         const result2 = response2.data.filter((movie) => {
         return movie.moodId.includes(Number(selectedMood));
       });
+       const result3 = response3.data.filter((song) => {
+        return song.moodId.includes(Number(selectedMood));
+      });
 
 
 
       setSuggestions1(result1);
-      setSuggestions2(result2)
+      setSuggestions2(result2);
+            setSuggestions3(result3);
+
     } catch (error) {
       console.log(error);
     }
@@ -81,6 +88,9 @@ function Discover() {
       })}
       {suggestions2.map((movie)=>{
         return <MovieCard key={movie.id} {...movie}/>
+      })}
+       {suggestions3.map((song)=>{
+        return <SongCard key={song.id} {...song}/>
       })}
     </div>
     

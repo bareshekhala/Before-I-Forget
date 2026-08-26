@@ -17,6 +17,7 @@ import MoviesPage from "./categories/Movies/MoviesPage";
 import MovieCreate from "./categories/Movies/MovieCreate";
 import MyMoviesPage from "./categories/Movies/MyMoviesPage";
 import MoviesDetails from "./categories/Movies/MoviesDetails";
+import MoviesEdit from "./categories/Movies/MoviesEdit";
 import SongsPage from "./categories/Songs/SongsPage";
 // import SongsDetailsPage from "./categories/Songs/SongsDetailsPage";
 import MySongsPage from "./categories/Songs/MySongsPage";
@@ -29,6 +30,7 @@ function App() {
 <div className="min-h-screen md:flex">
   {/* <Cloud/> */}
               <Navbar />
+              
 <div className="flex-1 min-w-0">
     <Routes>
           <Route path="/" element={<DashboardPage />} />
@@ -51,6 +53,8 @@ function App() {
 
                        <Route path="/movies/mymovies" element= {<MyMoviesPage />}/>
                         <Route path="/moviespage/:id" element= {<MoviesDetails />}/>
+                                                <Route path="/movies/edit/:id" element= {<MoviesEdit />}/>
+
 
 {/* Songs */}
                      <Route path="/songs" element= {<SongsPage />}/>

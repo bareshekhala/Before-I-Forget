@@ -3,6 +3,7 @@ import { Link, useParams, useNavigate } from "react-router-dom";
 import axios from "axios";
 import { ArrowLeftIcon } from "lucide-animated";
 import { HomeIcon } from "lucide-animated";
+import { v4 as uuidv4 } from "uuid";
 
 
 function BookDetailsPage() {
@@ -46,6 +47,30 @@ const [show, setShow] = useState(false);
 
   setShow(false)
       navigate("/booksPage");
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+
+
+  const handleFav = async (e) => {
+    e.preventDefault();
+
+    try {
+      let body = {
+        "id": book.id,
+        "title": book.title,
+        "author": book.author,
+        "image": book.image,
+        "description": book.description,
+        "moodId": book.moodId,
+      };
+      await axios.post(
+        "https://beforeiforget-server.onrender.com/favbooks",
+        body,
+      );
+      navigate("/books/mybooks");
     } catch (error) {
       console.log(error);
     }
@@ -96,6 +121,11 @@ const [show, setShow] = useState(false);
           <div>
             <button onClick={()=> navigate(`/books/edit/${id}`)} className="px-6 py-2 w-35 btnDay">
               Edit
+            </button>
+          </div>
+           <div>
+            <button  onClick={handleFav} className="px-6 py-2 w-35 btnDay">
+              Add to Favorites
             </button>
           </div>
         </div>

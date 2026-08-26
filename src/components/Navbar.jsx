@@ -6,37 +6,63 @@ function Navbar() {
   const navigate = useNavigate();
   return (
     <>
-      <nav className="hidden md:flex sticky top-0 h-screen w-64 shrink-0 flex-col justify-between p-6 backdrop-blur-xs">
+      <nav className="hidden md:flex sticky top-0 h-screen w-64 shrink-0 flex-col justify-between p-5 backdrop-blur-xs">
         <div>
           <h1 className="text-4xl italic">Before I Forget</h1>
 
-          <div className="mt-10">
+          <div className="mt-10 text-lg">
             <Link to={"/"}>
-              <p>Home</p>
+              <p className="p-2">Home</p>
             </Link>
-            <p>Archive</p>
             <Link to={"/discover"}>
-              <p>Discover</p>
+              <p className="p-2">Discover</p>
+            </Link>
+
+             <Link to={"/booksPage"}>
+              <p className="p-2">Books</p>
+            </Link>
+
+             <Link to={"/moviespage"}>
+              <p className="p-2">Movies</p>
+            </Link>
+            <Link to={"/songs"}>
+              <p className="p-2">Songs</p>
             </Link>
           </div>
         </div>
+          {/* <div className="w-full">
+    <iframe
+      src="https://open.spotify.com/embed/playlist/4FCySdtvSlHZtaXyNs7Ejr?utm_source=generator&theme=0&si=06d4341954704feb"
+      width="130%"
+      height="152"
+      allow="autoplay; clipboard-write; encrypted-media;"
+      loading="lazy"
+      className="rounded-xl left-0"
+    ></iframe>
+  </div> */}
       </nav>
 
       <nav className="flex md:hidden sticky top-0 z-20 w-full items-center justify-between p-4 backdrop-blur-md flex-col gap-y-10 ">
         <h1 className="text-4xl italic">Before I Forget</h1>
 
-        <select
-          onChange={(e) =>
-            (e.target.value === "Discover" && navigate("/discover"))(
-              e.target.value === "Home" && navigate("/"),
-            )
-          }
+        <select defaultValue={Option[1]}
+          onChange={(e) => {
+            e.target.value === "Discover" && navigate("/discover");
+            e.target.value === "Home" && navigate("/"),
+
+              e.target.value === "Books" && navigate("/booksPage")
+               e.target.value === "Movies" && navigate("/moviespage")
+                e.target.value === "Songs" && navigate("/songs")
+          }}
         >
-          <option value="" disabled>
+          <option>
             Choose
           </option>
           <option>Home</option>
-          <option>Archive</option>
+          <option>Books</option>
+          <option>Movies</option>
+                    <option>Songs</option>
+
           <option>Discover</option>
         </select>
       </nav>

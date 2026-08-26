@@ -50,6 +50,29 @@ const [show, setShow] = useState(false);
     }
   };
 
+
+    const handleFav = async (e) => {
+    e.preventDefault();
+
+    try {
+      let body = {
+        "id": movie.id,
+        "title": movie.title,
+        "poster_path": movie.poster_path,
+        "overview": movie.overview,
+        "moodId": movie.moodId,
+      };
+      await axios.post(
+        "https://beforeiforget-server.onrender.com/favmovies",
+        body,
+      );
+      navigate("/movies/mymovies");
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+
   if (isLoading) {
     return (
       <div className="min-h-screen flex items-center justify-center bg-black">
@@ -96,8 +119,13 @@ const [show, setShow] = useState(false);
             </button>
           </div>
           <div>
-            <button onClick={()=> navigate(`/books/edit/${id}`)} className="px-6 py-2 w-35 btnDay">
+            <button onClick={()=> navigate(`/movies/edit/${id}`)} className="px-6 py-2 w-35 btnDay">
               Edit
+            </button>
+          </div>
+           <div>
+            <button  onClick={handleFav} className="px-6 py-2 w-35 btnDay">
+              Add to Favorites
             </button>
           </div>
         </div>
