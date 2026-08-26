@@ -4,8 +4,8 @@ import { useEffect, useState } from "react";
 import { HomeIcon } from "lucide-animated";
 import { Link } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
-import SongCard from './SongCard';
-import SearchBar from './SearchBar';
+import SongCard from '../components/SongCard';
+import SearchBar from '../components/SearchBar';
 
 function SongsPage() {
     const navigate = useNavigate();

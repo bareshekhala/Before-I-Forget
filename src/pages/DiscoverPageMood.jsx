@@ -1,8 +1,8 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
 import BookCard from "../categories/books/booksComponents/BookCard";
-import MovieCard from "../categories/Movies/MovieCard";
-import SongCard from "../categories/Songs/SongCard";
+import MovieCard from "../categories/Movies/components/MovieCard";
+import SongCard from "../categories/Songs/components/SongCard";
 
 function Discover() {
 

@@ -1,7 +1,7 @@
 import React from 'react'
 import axios from "axios";
 import { useEffect, useState } from "react";
-import ThoughtCard from './ThoughtCard';
+import ThoughtCard from '../components/ThoughtCard';
 import { HomeIcon } from "lucide-animated";
 import { ArrowLeftIcon } from "lucide-animated";
 import { Link } from "react-router-dom";

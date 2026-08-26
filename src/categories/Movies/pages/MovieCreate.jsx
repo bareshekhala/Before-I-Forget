@@ -1,65 +1,23 @@
-import React from "react";
 import { useEffect, useState } from "react";
-import { useNavigate, useParams } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import axios from "axios";
-import { HomeIcon } from "lucide-animated";
+import { HomeIcon} from "lucide-animated";
 import { ArrowLeftIcon } from "lucide-animated";
 import { Link } from "react-router-dom";
 
-function MoviesEdit() {
- const navigate = useNavigate();
-  const { id } = useParams();
 
+function MovieCreate() {
+  const navigate = useNavigate()
   const [title, setTitle] = useState("");
   const [ posterPath, setPosterPath] = useState("");
   const [overview, setOverview] = useState("");
-  const [mood, setMood] = useState([]);
-  const [moods, setMoods] = useState([]);
+    const [category, setCategory] = useState("");
+
   const [moodId, setMoodId] = useState([]);
+  const [moods, setMoods] = useState([]);
 
-  const [isLoading, setIsLoading] = useState(true);
-
-useEffect(() => {
-    const getData = async () => {
-      try {
-        const response = await axios.get(
-          `https://beforeiforget-server.onrender.com/movies/${id}`,
-        );
-        setTitle(response.data.title);
-        setPosterPath(response.data.poster_path);
-        setOverview(response.data.overview);
-        setMood(response.data.moodId || []);
-
-        setIsLoading(false);
-      } catch (error) {
-        console.log(error);
-      }
-    };
-    getData();
-  }, [id]);
-
-  const handleFormSubmit = async (e) => {
-    e.preventDefault();
-    try {
-      let body = {
-        title: title,
-poster_path: posterPath, 
-      overview: overview,
-        moodId: mood,
-      };
-
-    await axios.put(
-        `https://beforeiforget-server.onrender.com/movies/${id}`,
-        body,
-      );
-
-      navigate(`/movies/${id}`);
-    } catch (error) {
-      console.log(error);
-    }
-  };
-
-   useEffect(() => {
+//getting the moods
+  useEffect(() => {
     const getMoods = async () => {
       try {
         const response = await axios.get(
@@ -75,35 +33,52 @@ poster_path: posterPath,
     getMoods();
   }, []);
 
-   function handleMood(e, moodId) {
-    if (e.target.checked) {
-      setMood((pre) => [...pre, moodId]);
-    } else {
-      setMood((pre) => {
-        return pre.filter((id) => id !== moodId);
-      });
+//post method
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    try {
+      const body = {
+        title: title,
+        poster_path: posterPath,
+        overview: overview,
+                category: category,
+
+        moodId: moodId,
+        myMovies: true
+      };
+      await axios.post("https://beforeiforget-server.onrender.com/movies", body);
+
+      navigate("/movies/mymovies");
+
+    } catch (error) {
+      console.log(error);
     }
+  };
+
+//
+  function handleMood(e, moodId){
+if(e.target.checked){
+setMoodId((pre)=>[...pre,moodId]);
+}
+else{
+  setMoodId((pre)=>{
+    return pre.filter((id)=> id !== moodId)
+  })
+}
   }
 
-  if (isLoading) {
-    return (
-      <div className="min-h-screen flex items-center justify-center bg-black">
-        <div className="loader"></div>
-      </div>
-    );
-  }
 
 
   return (
     <div>
-            <div className="pt-4 flex flex-row ">
+      <div className="pt-4 flex flex-row ">
           <Link to={"/moviespage"}>
             <ArrowLeftIcon className="ml-5 rounded-xl text-blue-950" />
           </Link>
           <Link to={"/"}><HomeIcon className="ml-5 text-blue-950"/></Link>
         </div>
 
-      <form onSubmit={handleFormSubmit} className="flex flex-col gap-5 max-w-lg mx-auto mt-10 backdrop-blur-xs px-2 justify-items-center">
+      <form onSubmit={handleSubmit} className="flex flex-col gap-5 max-w-lg mx-auto mt-10 backdrop-blur-xs px-2 justify-items-center">
 
         <div className="flex flex-col gap-2">
           <label>Title:</label>
@@ -134,7 +109,7 @@ poster_path: posterPath,
           className="px-4 py-3 form"
           /> 
           
-          {/* <select value={category}
+          <select required value={category}
           onChange={(e)=> setCategory(e.target.value)}
           className="w-50 form">
                       <option value="" disabled>
@@ -154,18 +129,17 @@ poster_path: posterPath,
             <option>Romance</option>
             <option>Classics</option>
             <option>Other</option>
-          </select> */}
+          </select>
         </div>
 
         <div className="flex flex-wrap justify-center gap-3 pt-4 mb-20 max-w-2xl mx-auto">
-          {moods.map((eachMood) => {
+          {moods.map((mood) => {
             return (
-              <div key={eachMood.id} >
-                <input type="checkbox" value={eachMood.id} 
-                  checked={mood.includes(eachMood.id)}
-                onChange= {(e)=> handleMood(e, eachMood.id)}/>
-                <label className="ml-2">
-                  {eachMood.name}
+              <div key={mood.id} >
+                <input type="checkbox" value={mood.id} 
+                onChange= {(e)=> handleMood(e, mood.id)}/>
+                <label htmlFor={`mood-${mood.id}`} className="ml-2">
+                  {mood.name}
                 </label>
               </div>
             );
@@ -176,10 +150,11 @@ poster_path: posterPath,
           type="submit"
           className="btnDay h-15 mb-5 w-40 mx-auto"
         >
-Done        </button>
+          Add Movie
+        </button>
       </form>
     </div>
-  )
+  );
 }
 
-export default MoviesEdit
+export default MovieCreate;

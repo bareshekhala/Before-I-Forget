@@ -1,8 +1,9 @@
-import React from "react";
+import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
 
 function Navbar() {
+  const[showDiscover, setShowDiscover] = useState(false)
   const navigate = useNavigate();
   return (
     <>
@@ -14,10 +15,25 @@ function Navbar() {
             <Link to={"/"}>
               <p className="p-2">Home</p>
             </Link>
-            <Link to={"/discover"}>
-              <p className="p-2">Discover</p>
-            </Link>
+            <div onMouseEnter={()=> setShowDiscover(true)} onMouseLeave={()=> setShowDiscover(false)}>
+               
+                <p className="p-2 cursor-pointer">Discover</p>
 
+
+{showDiscover && (
+    <div className="ml-5 text-base">
+      <Link to="/discover">
+        <p className="p-2">by Mood</p>
+      </Link>
+
+      <Link to="/discover/category">
+        <p className="p-2">by Category</p>
+      </Link>
+    </div>)}
+
+
+
+            </div>
              <Link to={"/booksPage"}>
               <p className="p-2">Books</p>
             </Link>

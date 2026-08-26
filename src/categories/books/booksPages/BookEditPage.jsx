@@ -102,7 +102,7 @@ function BookEditPage() {
   return (
     <div>
       <div className="pt-4 flex flex-row ">
-        <Link to={"/booksPage"}>
+        <Link to={`/booksPage/${id}`}>
           <ArrowLeftIcon className="ml-5 rounded-xl text-blue-950" />
         </Link>
         <Link to={"/"}>

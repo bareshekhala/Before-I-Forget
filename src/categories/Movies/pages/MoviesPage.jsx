@@ -4,8 +4,7 @@ import { Link } from "react-router-dom";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import { HomeIcon } from "lucide-animated";
-import MovieCard from "./MovieCard";
-
+import MovieCard from "../components/MovieCard";
 function MoviesPage() {
   const navigate = useNavigate();
   const [movies, setMovies] = useState([]);

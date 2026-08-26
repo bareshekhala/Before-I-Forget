@@ -105,6 +105,7 @@ const [show, setShow] = useState(false);
             </div>
 
              <div className="italic text-lg flex gap-7 flex-col px-10 pb-6">Description: {movie.overview}</div>
+            <p className='flex gap-7 flex-col px-10 pb-6'>Category: {movie.category}</p>
 
             </div>
 

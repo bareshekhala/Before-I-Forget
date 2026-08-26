@@ -4,7 +4,7 @@ import { useEffect, useState } from "react";
 import { HomeIcon } from "lucide-animated";
 import { ArrowLeftIcon, DeleteIcon} from "lucide-animated";
 import { Link } from "react-router-dom";
-import MovieCard from "./MovieCard";
+import MovieCard from "../components/MovieCard";
 import { useNavigate } from "react-router-dom";
 function MyMoviesPage() {
   const navigate = useNavigate()

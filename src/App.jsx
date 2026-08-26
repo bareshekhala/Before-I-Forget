@@ -8,20 +8,23 @@ import BookCreatePage from "./categories/books/booksPages/BookCreatePage";
 import Navbar from "./components/Navbar";
 import MyBooks from "./categories/books/booksPages/MyBooksPage";
 import BookEditPage from "./categories/books/booksPages/BookEditPage";
-import Discover from "./pages/DiscoverPage";
-import ThoughtsPage from "./categories/Thoughts/ThoughtsPage";
-import ThoughtCreate from "./categories/Thoughts/ThoughtCreate";
-import MyThoughtsPage from "./categories/Thoughts/MyThoughtsPage";
 
-import MoviesPage from "./categories/Movies/MoviesPage";
-import MovieCreate from "./categories/Movies/MovieCreate";
-import MyMoviesPage from "./categories/Movies/MyMoviesPage";
-import MoviesDetails from "./categories/Movies/MoviesDetails";
-import MoviesEdit from "./categories/Movies/MoviesEdit";
-import SongsPage from "./categories/Songs/SongsPage";
+import Discover from "./pages/DiscoverPageMood";
+import DiscoveredPageCategory from "./pages/DiscoveredPageCategory";
+
+import ThoughtsPage from "./categories/Thoughts/pages/ThoughtsPage";
+import ThoughtCreate from "./categories/Thoughts/pages/ThoughtCreate";
+import MyThoughtsPage from "./categories/Thoughts/pages/MyThoughtsPage";
+
+import MoviesPage from "./categories/Movies/pages/MoviesPage";
+import MovieCreate from "./categories/Movies/pages/MovieCreate";
+import MyMoviesPage from "./categories/Movies/pages/MyMoviesPage";
+import MoviesDetails from "./categories/Movies/pages/MoviesDetails";
+import MoviesEdit from "./categories/Movies/pages/MoviesEdit";
+import SongsPage from "./categories/Songs/Pages/SongsPage";
 // import SongsDetailsPage from "./categories/Songs/SongsDetailsPage";
-import MySongsPage from "./categories/Songs/MySongsPage";
-import SongCreate from "./categories/Songs/SongCreate";
+import MySongsPage from "./categories/Songs/Pages/MySongsPage";
+import SongCreate from "./categories/Songs/Pages/SongCreate";
 
 function App() {
 
@@ -39,7 +42,9 @@ function App() {
                 <Route path="/books/create" element={<BookCreatePage />} />
                 <Route path="/books/mybooks" element= {<MyBooks />}/>
                  <Route path="/books/edit/:id" element= {<BookEditPage />}/>
+
                   <Route path="/discover" element= {<Discover />}/>
+                  <Route path="/discover/category" element= {<DiscoveredPageCategory />}/>
 
                   {/* Thoughts */}
                    <Route path="/thought" element= {<ThoughtsPage />}/>
