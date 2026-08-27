@@ -38,7 +38,7 @@ function DashboardPage() {
                 </p>
                 <div className="flex flex-col md:flex-row items-center justify-between gap-6 mt-6">
                   <div className="flex flex-row gap-4 flex-wrap">
-                    <h1 className="mt-2 flex items-center justify-center gap-1 rounded-3xl px-4 h-10 bg-cyan-200/20">
+                    <h1 className="flex items-center justify-center gap-1 rounded-3xl px-4 h-10 bg-cyan-200/20">
                       <span>🌊</span>
                       <span>Calm</span>
                     </h1>
