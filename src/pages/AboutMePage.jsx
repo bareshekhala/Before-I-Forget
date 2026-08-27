@@ -14,9 +14,9 @@ function AboutMePage() {
               Hi, I'm Mobina! I'm a former engineer making my way into web
               development.
               <br />
-              I'm learning my way around the world of front-end development,
+              I'm learning my way around the world of frontend development,
               working with technologies like HTML, CSS, JavaScript, React, and
-              more, while also getting familiar with some back-end development.
+              more, while also getting familiar with some backend development.
               <br />
             </p>
           </div>
@@ -54,15 +54,9 @@ function AboutMePage() {
         <div className="flex flex-col md:flex-row items-center gap-10">
           <div className="w-full">
             <p className="text-xl text-[#334155] leading-[1.7] text-justify mx-auto pt-5">
-             Before I Forget is a personal archive for collecting and organizing content from books, movies, and songs, as well as thoughts and ideas.
-
-              <br />I built this project with{" "}
-              <span className=" font-bold">React</span> and{" "}
-              <span className=" font-bold">Tailwind CSS</span>, using{" "}
-              <span className=" font-bold">React Router</span> for navigation,
-              and <span className=" font-bold">APIs</span> to fetch information
-              from external sources. I also used additional packages for icons
-              and animations.
+             "Before I Forget" is a personal archive for collecting and organizing content from books, movies, and songs, as well as thoughts and ideas.
+<br/>
+              The project was built with <span className="italic">React</span> and <span className="italic">Tailwind CSS</span>. It uses <span className="italic">APIs</span> to manage the content, <span className="italic">Axios</span> for data fetching, <span className="italic">Recharts</span> for the mood chart, and <span className="italic">Lucide Animated</span> for icons.
             </p>
           </div>
         </div>
@@ -76,7 +70,7 @@ function AboutMePage() {
             </div>
 
             <div>
-              <p className="text-2xl italic text-[#334155] leading-[1.7] text-center mt-3">
+              <p className="text-2xl italic text-[#334155] leading-[1.7] text-center mt-3 ">
                 Let's Build something together
               </p>
               <hr/>

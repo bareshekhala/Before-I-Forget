@@ -124,52 +124,72 @@ function DashboardPage() {
             </div>
           </div>
         </section>
-</div>
+      </div>
 
-{/* <hr className="w-120 mx-auto"/> */}
+      {/* <hr className="w-120 mx-auto"/> */}
 
-{/* //How to use the app */}
+      {/* //How to use the app */}
 
-<section className="  gap-15 md:gap-0 flex flex-col flex-wrap mx-20  ">
+      <section className="mx-20">
+        {/* <h1 className="flex justify-center items-center mt-10 md:mt-20 text-2xl md:text-[40px] italic">
+          How It Works
+        </h1> */}
 
-<h1 className="flex font-medium justify-center items-center mt-10 md:mt-20 text-2xl md:text-[40px] italic">How The It Works</h1>
+        <div className="flex flex-col md:flex-row gap-10 md:gap-0 mt-10">
+          <div className="flex flex-col  px-1 md:px-6 w-full md:w-1/2">
+            <h1 className="text-4xl md:text-5xl font-extrabold text-[#ff6b6b]">
+              01
+            </h1>
+            <h1 className="text-3xl font-bold">Save</h1>
 
-<div className="flex justify-center items-center md:justify-start">
-  <div className="flex flex-col px-1 md:px-6 mt-2 md:mt-10 md:w-1/3 w-full">
-  <h1 className=" text-4xl md:text-5xl font-extrabold text-[#ff6b6b]">01</h1>
-  <h1 className="text-2xl font-bold">Save</h1>
-  <p className="text-xl pt-3 text-left">Add the books, songs, movies, thoughts, dreams or memories you want to keep.</p>
-  </div>
+            <p className="text-xl pt-3 text-left">
+              Add the books, songs, movies, thoughts, dreams or memories you
+              want to keep.
+            </p>
+          </div>
 
-  </div>
+          <div className="flex flex-col   px-1 md:px-6 w-full md:w-1/2">
+            <h1 className="text-4xl md:text-5xl font-extrabold text-[#ff6b6b]">
+              02
+            </h1>
 
-<div className="flex justify-center items-center md:flex-row-reverse md:justify-start">
-  <div className="flex flex-col px-1 md:px-6  md:w-1/3 w-full">
-  <h1 className=" text-4xl md:text-5xl  font-extrabold text-[#ff6b6b]">02</h1>
-  <h1 className="text-2xl font-bold">Organize</h1>
-  <p className="text-xl pt-3 text-left">Build your personal archive and connect things with moods.</p>
-  </div></div>
+            <h1 className="text-3xl font-bold">Organize</h1>
 
-<div className="flex justify-center items-center md:justify-start">
-   <div className="flex flex-col px-1 md:px-6 md:w-1/3 w-full md:justify-start">
-  <h1 className=" text-4xl md:text-5xl  font-extrabold text-[#ff6b6b]">03</h1>
-  <h1 className="text-2xl font-bold">Rediscover</h1>
-  <p className="text-xl pt-3 text-left">Come back whenever you don't know what to read, watch or listen to.</p>
-  </div></div>
+            <p className="text-xl pt-3 text-left">
+              Build your personal archive and connect things with moods and categories.
+            </p>
+          </div>
+        </div>
 
+        <div className="flex flex-col md:flex-row gap-10 md:gap-0 mt-10">
+          <div className="flex flex-col  px-1 md:px-6 w-full md:w-1/2">
+            <h1 className="text-4xl md:text-5xl font-extrabold text-[#ff6b6b]">
+              03
+            </h1>
 
-<div className="flex justify-center items-center md:flex-row-reverse md:justify-start">
-   <div className="flex flex-col px-1 md:px-6 pb-4 md:w-1/3 w-full">
-  <h1 className=" text-4xl md:text-5xl  font-extrabold text-[#ff6b6b]">04</h1>
-  <h1 className="text-2xl font-bold">Reflect</h1>
-  <p className="text-xl pt-3 text-left">Check your mood chart to visualize the emotional landscape of your archive. Discover which moods you save the most and what you naturally gravitate towards.</p>
-  </div>
-  </div>
+            <h1 className="text-3xl font-bold">Rediscover</h1>
 
-</section>
+            <p className="text-xl pt-3 text-left">
+              Come back whenever you don't know what to read, watch or listen
+              to.
+            </p>
+          </div>
 
+          <div className="flex flex-col px-1 md:px-6 w-full pb-3 md:w-1/2">
+            <h1 className="text-4xl md:text-5xl font-extrabold text-[#ff6b6b]">
+              04
+            </h1>
 
-   
+            <h1 className="text-3xl font-bold">Reflect</h1>
+
+            <p className="text-xl pt-3 text-left pb-5">
+              Check your mood chart to visualize the emotional landscape of your
+              archive. Discover which moods you save the most and what you
+              naturally gravitate towards.
+            </p>
+          </div>
+        </div>
+      </section>
     </>
   );
 }
