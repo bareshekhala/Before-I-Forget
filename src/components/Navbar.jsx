@@ -84,10 +84,11 @@ function Navbar() {
 
 
 {/* Navbar in smaller Screen */}
-      <nav className="flex md:hidden sticky top-0 z-20 w-full items-center justify-between p-4 backdrop-blur-md flex-col gap-y-10 bg-[#a6aaa8]">
+      <nav className="flex md:hidden sticky top-0 z-20 w-full items-center justify-between p-4 backdrop-blur-md flex-col gap-y-10 bg-[#102a52] text-gray-50">
         <h1 className="text-4xl italic ">Before I Forget</h1>
 
         <select
+        className=" bg-white/5 h-8 rounded-md pl-2"
           defaultValue={Option[1]}
           onChange={(e) => {
             e.target.value === "Discover by Mood" && navigate("/discover");
