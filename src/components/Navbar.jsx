@@ -78,6 +78,10 @@ function Navbar() {
             <Link to={"/chart"}>
               <p className="p-2 hover:bg-white/5">My Mood Chart</p>
             </Link>
+
+               <Link to={"/aboutme"}>
+              <p className="p-2 hover:bg-white/5">about</p>
+            </Link>
           </div>
         </div>
       </nav>
@@ -99,6 +103,7 @@ function Navbar() {
             e.target.value === "Movies" && navigate("/moviespage");
             e.target.value === "Songs" && navigate("/songs");
                e.target.value === "Chart" && navigate("/chart");
+                 e.target.value === "About" && navigate("/aboutme");
           }}
         >
           <option>Choose</option>
@@ -110,6 +115,7 @@ function Navbar() {
           <option>Discover by Mood</option>
           <option>Discover by Category</option>
           <option>Chart</option>
+          <option>About</option>
         </select>
       </nav>
     </>

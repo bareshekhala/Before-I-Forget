@@ -12,9 +12,11 @@ function DashboardPage() {
     <>
       <div className="flex w-full flex-col md:flex-row relative z-10">
         <section className="w-full min-w-0 overflow-x-hidden">
-          <div className="text-left sticky top-0 z-10 w-full bg-inherit p-6 mb-3 md:p-10">
-            <h1 className="italic text-3xl md:text-4xl">Your Archive</h1>
-            <p className="italic text-xl pt-3 md:text-2xl">
+          <div className="text-left sticky top-0 z-10 w-full bg-inherit p-6 md:p-10">
+
+            <h1 className="italic text-3xl md:text-4xl text-[#334155] ">Your Archive</h1>
+
+            <p className="italic text-xl pt-3 md:text-2xl text-[#334155] ">
               ORGANIZE YOUR THOUGHTS, MEDIA AND MEMORIES
             </p>
           </div>

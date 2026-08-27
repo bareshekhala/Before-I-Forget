@@ -1,6 +1,6 @@
 import { Routes, Route } from "react-router-dom";
 
-import DashboardPage from './pages/DashboardPage'
+import DashboardPage from "./pages/DashboardPage";
 
 import BooksPages from "./categories/books/booksPages/BooksPages";
 import BookDetailsPage from "./categories/books/booksPages/BookDetailsPage";
@@ -27,55 +27,61 @@ import MySongsPage from "./categories/Songs/Pages/MySongsPage";
 import SongCreate from "./categories/Songs/Pages/SongCreate";
 
 import ChartPage from "./pages/ChartPage";
+import AboutMePage from "./pages/AboutMePage";
+
+import NotFoundPage from "./pages/NotFoundPage";
 
 function App() {
-
   return (
     <>
-<div className="min-h-screen md:flex">
-  {/* <Cloud/> */}
-              <Navbar />
-              
-<div className="flex-1 min-w-0">
-    <Routes>
-          <Route path="/" element={<DashboardPage />} />
-          <Route path="/booksPage" element={<BooksPages />} />
-          <Route path="/booksPage/:id" element={<BookDetailsPage />} />
-                <Route path="/books/create" element={<BookCreatePage />} />
-                <Route path="/books/mybooks" element= {<MyBooks />}/>
-                 <Route path="/books/edit/:id" element= {<BookEditPage />}/>
+      <div className="min-h-screen md:flex">
+        {/* <Cloud/> */}
+        <Navbar />
 
-                  <Route path="/discover" element= {<Discover />}/>
-                  <Route path="/discover/category" element= {<DiscoveredPageCategory />}/>
+        <div className="flex-1 min-w-0">
+          <Routes>
+            <Route path="/" element={<DashboardPage />} />
+            <Route path="/booksPage" element={<BooksPages />} />
+            <Route path="/booksPage/:id" element={<BookDetailsPage />} />
+            <Route path="/books/create" element={<BookCreatePage />} />
+            <Route path="/books/mybooks" element={<MyBooks />} />
+            <Route path="/books/edit/:id" element={<BookEditPage />} />
 
-                  {/* Thoughts */}
-                   <Route path="/thought" element= {<ThoughtsPage />}/>
-                   <Route path="/thought/create" element= {<ThoughtCreate />}/>
-                   <Route path="/thought/mythoughts" element= {<MyThoughtsPage />}/>
+            <Route path="/discover" element={<Discover />} />
+            <Route
+              path="/discover/category"
+              element={<DiscoveredPageCategory />}
+            />
 
-                   {/* Movies */}
-                     <Route path="/moviespage" element= {<MoviesPage />}/>
+            {/* Thoughts */}
+            <Route path="/thought" element={<ThoughtsPage />} />
+            <Route path="/thought/create" element={<ThoughtCreate />} />
+            <Route path="/thought/mythoughts" element={<MyThoughtsPage />} />
 
-                      <Route path="/movies/create" element= {<MovieCreate />}/>
+            {/* Movies */}
+            <Route path="/moviespage" element={<MoviesPage />} />
 
-                       <Route path="/movies/mymovies" element= {<MyMoviesPage />}/>
-                        <Route path="/moviespage/:id" element= {<MoviesDetails />}/>
-                                                <Route path="/movies/edit/:id" element= {<MoviesEdit />}/>
+            <Route path="/movies/create" element={<MovieCreate />} />
 
+            <Route path="/movies/mymovies" element={<MyMoviesPage />} />
+            <Route path="/moviespage/:id" element={<MoviesDetails />} />
+            <Route path="/movies/edit/:id" element={<MoviesEdit />} />
 
-{/* Songs */}
-                     <Route path="/songs" element= {<SongsPage />}/>
-                     {/* <Route path="/songs/:id" element= {<SongsDetailsPage />}/> */}
-                      <Route path="/songs/mysongs" element= {<MySongsPage />}/>
-                       <Route path="/songs/create" element= {<SongCreate />}/>
+            {/* Songs */}
+            <Route path="/songs" element={<SongsPage />} />
+            {/* <Route path="/songs/:id" element= {<SongsDetailsPage />}/> */}
+            <Route path="/songs/mysongs" element={<MySongsPage />} />
+            <Route path="/songs/create" element={<SongCreate />} />
 
- <Route path="/chart" element= {<ChartPage />}/>
+            <Route path="/chart" element={<ChartPage />} />
+            <Route path="/aboutme" element={<AboutMePage />} />
 
-
-</Routes></div>
-</div>
+            <Route path="*" element={<NotFoundPage />} />
+          </Routes>
+        </div>
+      </div>
     </>
-  )
+  );
 }
 
-export default App
+export default App;
