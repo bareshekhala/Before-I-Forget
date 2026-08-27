@@ -1,6 +1,6 @@
 @import "tailwindcss";
 body {
- background: linear-gradient(135deg, #d5d0d7 0%, #ffe9e3 50%, #f4e8fb 100%);
+ background: linear-gradient( #d5d0d7 0%, #f2ecea 50%, #f4e8fb 100%);
   color: #334155;
   font-family: "Lora";
 }
@@ -18,7 +18,7 @@ body {
   
   transform: translateY(-8px);
  
-  /* border: 1px solid gold; */
+border:1px solid #ff6b6b;
 }
 
 .form{
@@ -41,23 +41,17 @@ body {
   box-shadow: 0 5px 15px rgba(20, 70, 130, 0.2);
 
   cursor: pointer;
-
-  transition: 0.3s;
 }
 
 .btnDay:hover {
-  background-color: rgb(250, 176, 250);
+  background-color: rgb(250, 204, 176);
   color: #102a52;
   transform: translateY(-3px);
 
   /* box-shadow: 0 8px 20px rgba(20, 70, 130, 0.3); */
 }
 
-/* .cloud {
-  position: absolute;
-  width: 100px;
-  z-index: 0;
-} */
+
 
 /* HTML: <div class="loader"></div> */
 .loader {

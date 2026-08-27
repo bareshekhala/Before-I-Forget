@@ -19,7 +19,7 @@ function DashboardPage() {
             <p className="italic text-xl pt-3">
               ORGANIZE YOUR THOUGHTS, MEDIA AND MEMORIES
             </p>
-            {/* <SearchBar className="justify-item-right" /> */}
+
           </div>
 
             <div className="max-w-5xl mx-auto px-6 mt-6">
@@ -39,12 +39,12 @@ function DashboardPage() {
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 max-w-4xl mx-auto justify-items-center gap-10 my-10">
             
 
-            <div className="flex flex-col size-50 border-2 p-2  cardDay text-center justify-center items-center gap-2 text-xl">
+            <div className="flex flex-col size-50 border-2 p-2  cardDay text-center justify-center items-center gap-2 text-xl ">
 
               <Link to={"/booksPage"} className="">
                 Books
               </Link>{" "}
-              <BookTextIcon />
+              <BookTextIcon  />
             </div>
 
             <div className="flex flex-col size-50 border-2 p-2  cardDay text-center justify-center items-center gap-2 text-xl">

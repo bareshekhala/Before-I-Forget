@@ -21,6 +21,9 @@ function ThoughtCreate() {
   const [moods, setMoods] = useState([]);
   const [moodId, setMoodId] = useState([]);
 
+    const [errorMessage, setErrorMessage] = useState(null);
+
+
   //getting the moods
   useEffect(() => {
     const getMoods = async () => {
@@ -40,6 +43,11 @@ function ThoughtCreate() {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+
+     if (moodId.length === 0 || !title) {
+      setErrorMessage("Please Fill out the Titel and Choose at least one Mood");
+      return;
+     }
     try {
       const body = {
         id: uuidv4(),
@@ -160,12 +168,17 @@ function ThoughtCreate() {
                   value={mood.id}
                   onChange={(e) => handleMood(e, mood.id)}
                 />
-                <label htmlFor={`mood-${mood.id}`} className="ml-2">
+                <label className="ml-2">
                   {mood.name}
                 </label>
               </div>
             );
           })}
+            <div>
+            {errorMessage && (
+              <p className=" relative text-fuchsia-800">{errorMessage}</p>
+            )}
+          </div>
         </div>
 
         <button type="submit" className="btnDay h-15 mb-5 w-40 mx-auto">

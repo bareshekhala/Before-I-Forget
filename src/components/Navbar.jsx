@@ -9,19 +9,19 @@ function Navbar() {
   const navigate = useNavigate();
   return (
     <>
-      <nav className="hidden md:flex sticky top-0 h-screen w-64 shrink-0 flex-col justify-between p-5 backdrop-blur-xs bg-[#a6aaa8]">
+      <nav className="hidden md:flex sticky top-0 h-screen w-64 shrink-0 flex-col justify-between p-5 backdrop-blur-xs bg-[#102a52] text-gray-50">
         <div>
           <h1 className="text-3xl mt-4.5 italic">Before I Forget</h1>
 
-          <div className="mt-10 text-lg">
+          <div className="mt-10 text-lg font-mono pt-3 uppercase">
             <Link to={"/"}>
-              <p className="p-2">Home</p>
+              <p className="p-2 hover:bg-white/5">Home</p>
             </Link>
             <div
               onMouseEnter={() => setShowDiscover(true)}
               onMouseLeave={() => setShowDiscover(false)}
             >
-              <p className="p-2 cursor-pointer">Discover</p>
+              <p className="p-2 cursor-pointer hover:bg-white/5">Discover</p>
 
               {showDiscover && (
                 <div className="ml-5 text-base">
@@ -36,24 +36,24 @@ function Navbar() {
               )}
             </div>
             <Link to={"/booksPage"}>
-              <p className="p-2">Books</p>
+              <p className="p-2 hover:bg-white/5">Books</p>
             </Link>
 
             <Link to={"/moviespage"}>
-              <p className="p-2">Movies</p>
+              <p className="p-2 hover:bg-white/5">Movies</p>
             </Link>
             <Link to={"/songs"}>
-              <p className="p-2">Songs</p>
+              <p className="p-2 hover:bg-white/5">Songs</p>
             </Link>
 
              <Link to={"/thought"}>
-              <p className="p-2">Brain Storming</p>
+              <p className="p-2 hover:bg-white/5">Brain Storming</p>
             </Link>
 <div
               onMouseEnter={() => setShowArchive(true)}
               onMouseLeave={() => setShowArchive(false)}
             >
-              <p className="p-2 cursor-pointer">My Archive</p>
+              <p className="p-2 cursor-pointer hover:bg-white/5">My Archive</p>
 
               {showArchive && (
                 <div className="ml-5 text-base">
@@ -76,7 +76,7 @@ function Navbar() {
               )}
             </div>
             <Link to={"/chart"}>
-              <p className="p-2">My Mood Chart</p>
+              <p className="p-2 hover:bg-white/5">My Mood Chart</p>
             </Link>
           </div>
         </div>
