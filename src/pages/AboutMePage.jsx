@@ -79,7 +79,7 @@ function AboutMePage() {
               <a href="https://github.com/bareshekhala">
                 <img
                   src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQblkhBDCixhdGaP_B21didlIi1nkX4waw9wkGBKIevXg&s=10"
-                  className="w-8 h-8ß object-cover rounded-2xl cursor-pointer"
+                  className="w-8 h-8 object-cover rounded-2xl cursor-pointer"
                 />
               </a>
 

@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
-
+import Footer from "./Footer";
 function Navbar() {
   const [showDiscover, setShowDiscover] = useState(false);
   const [showArchive, setShowArchive] = useState(false);
@@ -84,6 +84,7 @@ function Navbar() {
             </Link>
           </div>
         </div>
+<Footer/>
       </nav>
 
       {/* Navbar in smaller Screen */}
