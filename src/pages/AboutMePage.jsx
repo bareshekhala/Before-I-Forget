@@ -38,9 +38,8 @@ function AboutMePage() {
 
           <div className="w-full md:w-1/2">
             <p className="text-xl text-[#334155] leading-[1.7] mx-auto text-justify">
-              When I'm not coding, I'm probably riding my bike, reading a good
-              book, rewatching Friends for the hundredth time, or learning audio
-              production and collecting ideas for a podcast I recently started.
+              Outside of work and coding, I love riding my bike, getting lost in a book, rewatching Friends for the hundredth time, and learning audio production as I gather ideas for a podcast I recently started.
+
             </p>
           </div>
         </div>
