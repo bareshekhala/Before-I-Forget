@@ -33,17 +33,17 @@ function DiscoveredPageCategory() {
       );
 
       const result1 = response1.data.filter((book) => {
-        return book.category.toLowerCase() === selectedCategory;
+        return book.category && book.category.toLowerCase() === selectedCategory;
       });
 
       const result2 = response2.data.filter((movie) => {
-        return movie.category.toLowerCase() === selectedCategory;
+        return movie.category && movie.category.toLowerCase() === selectedCategory;
       });
       const result11 = response11.data.filter((fbook) => {
-        return fbook.category.toLowerCase() === selectedCategory;
+        return fbook.category && fbook.category.toLowerCase() === selectedCategory;
       });
       const result22 = response22.data.filter((fmovie) => {
-        return fmovie.category.toLowerCase() === selectedCategory;
+        return fmovie.category && fmovie.category.toLowerCase() === selectedCategory;
       });
       setSuggestions1(result1);
       setSuggestions11(result11);
