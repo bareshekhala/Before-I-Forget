@@ -13,8 +13,8 @@ function MoviesEdit() {
   const [title, setTitle] = useState("");
   const [posterPath, setPosterPath] = useState("");
   const [overview, setOverview] = useState("");
-    const [category, setCategory] = useState("");
-  
+  const [category, setCategory] = useState("");
+
   const [mood, setMood] = useState([]);
   const [moods, setMoods] = useState([]);
   const [moodId, setMoodId] = useState([]);
@@ -31,17 +31,34 @@ function MoviesEdit() {
         setTitle(response.data.title);
         setPosterPath(response.data.poster_path);
         setOverview(response.data.overview);
-                setCategory(response.data.category);
+        setCategory(response.data.category);
 
         setMood(response.data.moodId || []);
 
         setIsLoading(false);
       } catch (error) {
+  try {
+        const response = await axios.get(
+          `https://beforeiforget-server.onrender.com/favmovies/${id}`,
+        );
+
+        setTitle(response.data.title);
+        setPosterPath(response.data.poster_path);
+        setOverview(response.data.overview);
+        setCategory(response.data.category);
+        setMood(response.data.moodId || []);
+
+        setIsLoading(false);
+
+      } catch (error) {
         console.log(error);
+        setIsLoading(false);
       }
-    };
-    getData();
-  }, [id]);
+    }
+  };
+
+  getData();
+}, [id]);
 
   const handleFormSubmit = async (e) => {
     e.preventDefault();
@@ -49,27 +66,36 @@ function MoviesEdit() {
       setErrorMessage("Please Fill out the Titel and Choose at least one Mood");
       return;
     }
-
-    try {
-      let body = {
+   let body = {
         title: title,
         poster_path: posterPath,
         overview: overview,
-                category: category,
-
+        category: category,
         moodId: mood,
       };
 
+    try {
+   
       await axios.put(
         `https://beforeiforget-server.onrender.com/movies/${id}`,
         body,
       );
 
-      navigate(`/movies/${id}`);
+      navigate(`/moviespage/${id}`);
+    } catch (error) {
+      try {
+      await axios.put(
+        `https://beforeiforget-server.onrender.com/favmovies/${id}`,
+        body,
+      );
+
+      navigate(`/moviespage/${id}`);
+
     } catch (error) {
       console.log(error);
     }
-  };
+  }
+};
 
   useEffect(() => {
     const getMoods = async () => {
@@ -155,12 +181,15 @@ function MoviesEdit() {
             className="px-4 py-3 form"
           />
 
-          <select required value={category}
-          onChange={(e)=> setCategory(e.target.value)}
-          className="w-50 form">
-                      <option value="" disabled>
-    Choose a category
-  </option>
+          <select
+            required
+            value={category}
+            onChange={(e) => setCategory(e.target.value)}
+            className="w-50 form"
+          >
+            <option value="" disabled>
+              Choose a category
+            </option>
             <option>Fiction</option>
             <option>Poetry</option>
             <option>Philosophy</option>
@@ -192,7 +221,7 @@ function MoviesEdit() {
               </div>
             );
           })}
-             <div>
+          <div>
             {errorMessage && (
               <p className=" relative text-fuchsia-800">{errorMessage}</p>
             )}

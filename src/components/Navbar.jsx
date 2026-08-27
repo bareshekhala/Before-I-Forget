@@ -4,7 +4,7 @@ import { useNavigate } from "react-router-dom";
 
 function Navbar() {
   const [showDiscover, setShowDiscover] = useState(false);
-    const [showArchive, setShowArchive] = useState(false);
+  const [showArchive, setShowArchive] = useState(false);
 
   const navigate = useNavigate();
   return (
@@ -46,10 +46,10 @@ function Navbar() {
               <p className="p-2 hover:bg-white/5">Songs</p>
             </Link>
 
-             <Link to={"/thought"}>
+            <Link to={"/thought"}>
               <p className="p-2 hover:bg-white/5">Brain Storming</p>
             </Link>
-<div
+            <div
               onMouseEnter={() => setShowArchive(true)}
               onMouseLeave={() => setShowArchive(false)}
             >
@@ -79,20 +79,19 @@ function Navbar() {
               <p className="p-2 hover:bg-white/5">My Mood Chart</p>
             </Link>
 
-               <Link to={"/aboutme"}>
+            <Link to={"/aboutme"}>
               <p className="p-2 hover:bg-white/5">about</p>
             </Link>
           </div>
         </div>
       </nav>
 
-
-{/* Navbar in smaller Screen */}
+      {/* Navbar in smaller Screen */}
       <nav className="flex md:hidden sticky top-0 z-20 w-full items-center justify-between p-4 backdrop-blur-md flex-col gap-y-10 bg-[#102a52] text-gray-50">
         <h1 className="text-4xl italic ">Before I Forget</h1>
 
         <select
-        className=" bg-white/5 h-8 rounded-md pl-2"
+          className=" bg-white/5 h-8 rounded-md pl-2"
           defaultValue={Option[1]}
           onChange={(e) => {
             e.target.value === "Discover by Mood" && navigate("/discover");
@@ -102,8 +101,9 @@ function Navbar() {
               e.target.value === "Books" && navigate("/booksPage"));
             e.target.value === "Movies" && navigate("/moviespage");
             e.target.value === "Songs" && navigate("/songs");
-               e.target.value === "Chart" && navigate("/chart");
-                 e.target.value === "About" && navigate("/aboutme");
+            e.target.value === "Chart" && navigate("/chart");
+            e.target.value === "About" && navigate("/aboutme");
+            e.target.value === "Brain Storming" && navigate("/thoughts");
           }}
         >
           <option>Choose</option>
@@ -111,7 +111,7 @@ function Navbar() {
           <option>Books</option>
           <option>Movies</option>
           <option>Songs</option>
-
+          <option>Brain Storming</option>
           <option>Discover by Mood</option>
           <option>Discover by Category</option>
           <option>Chart</option>

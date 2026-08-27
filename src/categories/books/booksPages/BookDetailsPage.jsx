@@ -5,19 +5,18 @@ import { ArrowLeftIcon } from "lucide-animated";
 import { HomeIcon } from "lucide-animated";
 import { v4 as uuidv4 } from "uuid";
 
-
 function BookDetailsPage() {
   const navigate = useNavigate();
   const { id } = useParams();
   const [book, setBook] = useState(null);
   const [isLoading, setIsLoading] = useState(true);
 
-//Modal
-const [show, setShow] = useState(false);
- const handleClose = () => setShow(false);
- const handleShow = () => setShow(true)
+  //Modal
+  const [show, setShow] = useState(false);
+  const handleClose = () => setShow(false);
+  const handleShow = () => setShow(true);
 
-// getting books to make a list from them
+  // getting books to make a list from them
   useEffect(() => {
     const getData = async () => {
       try {
@@ -26,12 +25,23 @@ const [show, setShow] = useState(false);
         );
         setBook(response.data);
 
-        // to show the loading page for 2 seconds
         setTimeout(() => {
           setIsLoading(false);
         }, 2000);
       } catch (error) {
-        console.log(error);
+        try {
+          const response = await axios.get(
+            `https://beforeiforget-server.onrender.com/favbooks/${id}`,
+          );
+          setBook(response.data);
+
+          setTimeout(() => {
+            setIsLoading(false);
+          }, 2000);
+        } catch (error) {
+          console.log(error);
+          setIsLoading(false);
+        }
       }
     };
 
@@ -40,31 +50,39 @@ const [show, setShow] = useState(false);
 
   //Delete function
   const handleDelete = async () => {
-     //console.log("Deleting book with id:", id);
+    //console.log("Deleting book with id:", id);
     try {
       await axios.delete(
-        `https://beforeiforget-server.onrender.com/books/${id}`);
+        `https://beforeiforget-server.onrender.com/books/${id}`,
+      );
 
-  setShow(false)
+      setShow(false);
       navigate("/booksPage");
     } catch (error) {
-      console.log(error);
+      try {
+        await axios.delete(
+          `https://beforeiforget-server.onrender.com/favmovies/${id}`,
+        );
+
+        setShow(false);
+        navigate("/movies/mymovies");
+      } catch (error) {
+        console.log(error);
+      }
     }
   };
-
-
 
   const handleFav = async (e) => {
     e.preventDefault();
 
     try {
       let body = {
-        "id": book.id,
-        "title": book.title,
-        "author": book.author,
-        "image": book.image,
-        "description": book.description,
-        "moodId": book.moodId,
+        id: book.id,
+        title: book.title,
+        author: book.author,
+        image: book.image,
+        description: book.description,
+        moodId: book.moodId,
       };
       await axios.post(
         "https://beforeiforget-server.onrender.com/favbooks",
@@ -91,17 +109,22 @@ const [show, setShow] = useState(false);
           <Link to="/booksPage">
             <ArrowLeftIcon className="ml-5 rounded-xl text-blue-950" />
           </Link>
-          <Link to={"/"}><HomeIcon className="ml-5 text-blue-950"/></Link>
+          <Link to={"/"}>
+            <HomeIcon className="ml-5 text-blue-950" />
+          </Link>
         </div>
+
         <div className=" w-full max-w-2xl mx-auto rounded-xl">
           <div className="flex justify-center">
             <img className="h-120 w-90 p-5 object-contain" src={book.image} />
           </div>
 
           <div className="flex gap-7 flex-col p-10">
-            <h1 className="items-left font-bold text-2xl">Title: {book.title}</h1>
+            <h1 className="items-left font-bold text-2xl">
+              Title: {book.title}
+            </h1>
 
-            <h2 className="text-xl" >Author: {book.author}</h2>
+            <h2 className="text-xl">Author: {book.author}</h2>
 
             <p className="italic text-lg">Description: {book.description}</p>
 
@@ -119,49 +142,42 @@ const [show, setShow] = useState(false);
             </button>
           </div>
           <div>
-            <button onClick={()=> navigate(`/books/edit/${id}`)} className="px-2 sm:px-6 py-2 w-24 sm:w-35 btnDay">
+            <button
+              onClick={() => navigate(`/books/edit/${id}`)}
+              className="px-2 sm:px-6 py-2 w-24 sm:w-35 btnDay"
+            >
               Edit
             </button>
           </div>
-           <div>
-            <button  onClick={handleFav} className="px-2 sm:px-6 py-2 w-30 sm:w-35 btnDay">
+          <div>
+            <button
+              onClick={handleFav}
+              className="px-2 sm:px-6 py-2 w-30 sm:w-35 btnDay"
+            >
               Add to Favorites
             </button>
           </div>
         </div>
 
         {/*Are you sure part*/}
-{show && (
-  <div className="fixed inset-0  form flex items-center text-center justify-center">
+        {show && (
+          <div className="fixed inset-0  form flex items-center text-center justify-center">
+            <div>
+              <h2 className="text-3xl font-bold mb-6">Are You Sure?</h2>
 
-    <div>
+              <div className="flex flex-col justify-end gap-3">
+                <button onClick={handleClose} className="btnDay px-5 py-2">
+                  Cancel
+                </button>
 
-      <h2 className="text-3xl font-bold mb-6">
-        Are You Sure?
-      </h2>
-
-      <div className="flex flex-col justify-end gap-3">
-
-        <button
-          onClick={handleClose}
-          className="btnDay px-5 py-2"
-        >
-          Cancel
-        </button>
-
-        <button
-          onClick={handleDelete}
-          className="btnDay px-5 py-2"
-        >
-          Delete
-        </button>
-        <img src="https://reactiongifs.me/wp-content/uploads/2021/12/Hmm-are-you-lying-to-me.gif" />
-
-      </div>
-
-    </div>
-  </div>
-)}
+                <button onClick={handleDelete} className="btnDay px-5 py-2">
+                  Delete
+                </button>
+                <img src="https://reactiongifs.me/wp-content/uploads/2021/12/Hmm-are-you-lying-to-me.gif" />
+              </div>
+            </div>
+          </div>
+        )}
       </div>
     </>
   );

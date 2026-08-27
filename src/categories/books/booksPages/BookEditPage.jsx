@@ -37,7 +37,23 @@ function BookEditPage() {
 
         setIsLoading(false);
       } catch (error) {
-        console.log(error);
+        try {
+          const response = await axios.get(
+            `https://beforeiforget-server.onrender.com/favbooks/${id}`,
+          );
+
+          setTitle(response.data.title);
+          setAuthor(response.data.author);
+          setCategory(response.data.category);
+          setImage(response.data.image);
+          setDescription(response.data.description);
+          setMood(response.data.moodId || []);
+
+          setIsLoading(false);
+        } catch (error) {
+          console.log(error);
+          setIsLoading(false);
+        }
       }
     };
     getData();
@@ -49,16 +65,16 @@ function BookEditPage() {
       setErrorMessage("Please Fill out the Titel and Choose at least one Mood");
       return;
     }
-    try {
-      let body = {
-        title: title,
-        author: author,
-        image: image,
-        category: category,
-        description: description,
-        moodId: mood,
-      };
+    let body = {
+      title: title,
+      author: author,
+      image: image,
+      category: category,
+      description: description,
+      moodId: mood,
+    };
 
+    try {
       await axios.put(
         `https://beforeiforget-server.onrender.com/books/${id}`,
         body,
@@ -66,7 +82,15 @@ function BookEditPage() {
 
       navigate(`/booksPage/${id}`);
     } catch (error) {
-      console.log(error);
+      try {
+        await axios.put(
+          `https://beforeiforget-server.onrender.com/favbooks/${id}`,
+          body,
+        );
+        navigate(`/booksPage/${id}`);
+      } catch (error) {
+        console.log(error);
+      }
     }
   };
 
@@ -192,8 +216,8 @@ function BookEditPage() {
         <div className="flex flex-wrap justify-center gap-3 pt-4 mb-20 max-w-2xl mx-auto">
           {moods.map((eachMood) => {
             return (
-              <div>
-                <div key={eachMood.id}>
+              <div key={eachMood.id}>
+                <div>
                   <input
                     type="checkbox"
                     value={eachMood.id}

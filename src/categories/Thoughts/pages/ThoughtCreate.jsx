@@ -21,8 +21,7 @@ function ThoughtCreate() {
   const [moods, setMoods] = useState([]);
   const [moodId, setMoodId] = useState([]);
 
-    const [errorMessage, setErrorMessage] = useState(null);
-
+  const [errorMessage, setErrorMessage] = useState(null);
 
   //getting the moods
   useEffect(() => {
@@ -44,10 +43,10 @@ function ThoughtCreate() {
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-     if (moodId.length === 0 || !title) {
+    if (moodId.length === 0 || !title) {
       setErrorMessage("Please Fill out the Titel and Choose at least one Mood");
       return;
-     }
+    }
     try {
       const body = {
         id: uuidv4(),
@@ -117,7 +116,6 @@ function ThoughtCreate() {
 
         <div className="flex flex-col gap-5">
           <div>
-            {" "}
             <label>Image</label>
           </div>
           <input
@@ -168,13 +166,11 @@ function ThoughtCreate() {
                   value={mood.id}
                   onChange={(e) => handleMood(e, mood.id)}
                 />
-                <label className="ml-2">
-                  {mood.name}
-                </label>
+                <label className="ml-2">{mood.name}</label>
               </div>
             );
           })}
-            <div>
+          <div>
             {errorMessage && (
               <p className=" relative text-fuchsia-800">{errorMessage}</p>
             )}
