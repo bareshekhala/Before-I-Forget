@@ -61,11 +61,11 @@ function BookDetailsPage() {
     } catch (error) {
       try {
         await axios.delete(
-          `https://beforeiforget-server.onrender.com/favmovies/${id}`,
+          `https://beforeiforget-server.onrender.com/favbooks/${id}`,
         );
 
         setShow(false);
-        navigate("/movies/mymovies");
+        navigate("/bookspage");
       } catch (error) {
         console.log(error);
       }
