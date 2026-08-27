@@ -13,8 +13,9 @@ function DashboardPage() {
       <div className="flex w-full flex-col md:flex-row relative z-10">
         <section className="w-full min-w-0 overflow-x-hidden">
           <div className="text-left sticky top-0 z-10 w-full bg-inherit p-6 md:p-10">
-
-            <h1 className="italic text-3xl md:text-4xl text-[#334155] ">Your Archive</h1>
+            <h1 className="italic text-3xl md:text-4xl text-[#334155] ">
+              Your Archive
+            </h1>
 
             <p className="italic text-xl pt-3 md:text-2xl text-[#334155] ">
               ORGANIZE YOUR THOUGHTS, MEDIA AND MEMORIES
@@ -37,13 +38,29 @@ function DashboardPage() {
                 </p>
                 <div className="flex flex-col md:flex-row items-center justify-between gap-6 mt-6">
                   <div className="flex flex-row gap-4 flex-wrap">
+                    <h1 className="mt-2 flex items-center justify-center gap-1 rounded-3xl px-4 h-10 bg-cyan-200/20">
+                      <span>🌊</span>
+                      <span>Calm</span>
+                    </h1>
 
-                    <h1 className=" border-cyan-600/60  mt-2 flex justify-center items-center  rounded-3xl w-1/4 h-10 bg-cyan-200/20 ">🌊 Calm</h1>
+                    <h1 className="flex items-center justify-center gap-1 rounded-3xl px-4 h-10 bg-gray-500/20">
+                      <span>⚰️</span>
+                      <span>Dark</span>
+                    </h1>
+                    <h1 className="flex items-center justify-center gap-1 rounded-3xl px-4 h-10 bg-purple-400/25">
+                      <span>🛸</span>
+                      <span>Fantasy</span>
+                    </h1>
 
-                    <h1 className=" mt-2 flex justify-center items-center rounded-3xl w-1/4 h-10 bg-mist-500/20 border-olive-800/60">⚰️ Dark</h1>
-                    <h1 className=" mt-2 flex justify-center items-center  rounded-3xl w-1/4 h-10 bg-purple-400/25  border-fuchsia-800/60">Fantacy🛸</h1>
-                    <h1 className=" mt-2 flex justify-center items-center  rounded-3xl w-1/4 h-10 border-green-600/60 bg-green-500/20">🔦 Curious</h1>
-                    <h1 className=" mt-2 flex justify-center items-center  rounded-3xl w-35 h-10 border-yellow-400 bg-yellow-400/20">💭 Philosophical</h1>
+                    <h1 className="flex items-center justify-center gap-1 rounded-3xl px-4 h-10 bg-green-500/20">
+                      <span>🔦</span>
+                      <span>Curious</span>
+                    </h1>
+
+                    <h1 className="flex items-center justify-center gap-1 rounded-3xl px-4 h-10 bg-yellow-400/20">
+                      <span>💭</span>
+                      <span>Philosophical</span>
+                    </h1>
                   </div>
 
                   <Link
