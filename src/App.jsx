@@ -22,7 +22,6 @@ import MyMoviesPage from "./categories/Movies/pages/MyMoviesPage";
 import MoviesDetails from "./categories/Movies/pages/MoviesDetails";
 import MoviesEdit from "./categories/Movies/pages/MoviesEdit";
 import SongsPage from "./categories/Songs/Pages/SongsPage";
-// import SongsDetailsPage from "./categories/Songs/SongsDetailsPage";
 import MySongsPage from "./categories/Songs/Pages/MySongsPage";
 import SongCreate from "./categories/Songs/Pages/SongCreate";
 
