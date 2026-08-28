@@ -104,7 +104,7 @@ function Navbar() {
             e.target.value === "Songs" && navigate("/songs");
             e.target.value === "Chart" && navigate("/chart");
             e.target.value === "About" && navigate("/aboutme");
-            e.target.value === "Brain Storming" && navigate("/thoughts");
+            e.target.value === "Brain Storming" && navigate("/thought");
           }}
         >
           <option>Choose</option>
